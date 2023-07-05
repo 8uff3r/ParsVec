@@ -19,18 +19,19 @@
 import PocketBase from "pocketbase";
 import Post from "./Post.vue";
 
+const config = useRuntimeConfig() as any;
 const props = defineProps({
   search: { type: String, default: "" },
 });
 const posts = ref();
 onMounted(async () => {
-  const pb = new PocketBase("http://127.0.0.1:8090");
+  const pb = new PocketBase(config.public.PB_ENDPOINT);
   watch(
     () => props.search,
     async () => {
       posts.value = (
         await pb.collection("posts").getList(1, 100, {
-          sort:"-created",
+          sort: "-created",
           expand: "owner",
           filter: `title ~ '${props.search}'`,
         })

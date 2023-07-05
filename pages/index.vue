@@ -488,6 +488,7 @@
 import PocketBase from "pocketbase";
 import Post from "@/components/home/Post.vue";
 
+const config = useRuntimeConfig() as any;
 const posts = ref();
 const masonaryClass = (index: number) => {
   if (index % 4 === 0) {
@@ -504,7 +505,7 @@ const masonaryClass = (index: number) => {
   }
 };
 onMounted(async () => {
-  const pb = new PocketBase("http://127.0.0.1:8090");
+  const pb = new PocketBase(config.public.PB_ENDPOINT);
   posts.value = (
     await pb.collection("posts").getList(1, 12, {
       sort: "-created",

@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      PB_ENDPOINT: process.env.PB_ENDPOINT,
+      PB_ENDPOINT: process.env.PB_ENDPOINT || "",
     },
   },
   ssr: true,

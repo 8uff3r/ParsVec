@@ -78,10 +78,11 @@
 <script setup lang="ts">
 import PocketBase from "pocketbase";
 
+const config = useRuntimeConfig() as any;
 let pb: any = null;
 const user = ref("");
 onMounted(async () => {
-  pb = new PocketBase("http://127.0.0.1:8090");
+  pb = new PocketBase(config.public.PB_ENDPOINT);
   user.value = pb.authStore.model.email;
 });
 </script>

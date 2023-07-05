@@ -252,6 +252,7 @@
 <script setup lang="ts">
 import PocketBase from "pocketbase";
 
+const config = useRuntimeConfig() as any;
 let pb: any = null;
 const emit = defineEmits(["success"]);
 const email = ref("");
@@ -259,7 +260,7 @@ const password = ref("");
 const username = ref("");
 const usernameError = ref("");
 onMounted(async () => {
-  pb = new PocketBase("http://127.0.0.1:8090");
+  pb = new PocketBase(config.public.PB_ENDPOINT);
 });
 
 const submit = async () => {

@@ -89,7 +89,7 @@
             >
               <img
                 :src="imageUrl"
-                class="object-contain  h-[37.17rem] w-[49.56rem] z-[1] rounded-lg overflow-hidden"
+                class="object-contain h-[37.17rem] w-[49.56rem] z-[1] rounded-lg overflow-hidden"
               />
             </div>
           </div>
@@ -245,8 +245,9 @@
 <script setup lang="ts">
 import PocketBase, { Record } from "pocketbase";
 
+const config = useRuntimeConfig() as any;
 const router = useRouter();
-const pb = new PocketBase("http://127.0.0.1:8090");
+const pb = new PocketBase(config.public.PB_ENDPOINT);
 const route = useRoute();
 const postId = route.params.id as string;
 const post = await pb.collection("posts").getOne(postId, { expand: "owner" });

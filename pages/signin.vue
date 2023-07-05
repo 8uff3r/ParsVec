@@ -198,10 +198,11 @@ import { useAuthStore } from "../stores/user";
 import PocketBase from "pocketbase";
 
 let pb: any = null;
-const store = useAuthStore()
+const store = useAuthStore();
 
+const config = useRuntimeConfig() as any;
 onMounted(async () => {
-  pb = new PocketBase("http://127.0.0.1:8090");
+  pb = new PocketBase(config.public.PB_ENDPOINT);
 });
 
 const email = ref("admin@gmail.com");
@@ -217,7 +218,7 @@ const doLogin = async () => {
       .collection("users")
       .authWithPassword(email.value, password.value)
       .then((res: any) => {
-        store.setAuthed(true)
+        store.setAuthed(true);
         router.push("/latest");
         return res;
       });

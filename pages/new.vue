@@ -83,6 +83,7 @@
 import SuccessModal from "../components/new/SuccessModal.vue";
 import PocketBase from "pocketbase";
 
+const config = useRuntimeConfig() as any;
 const router = useRouter();
 
 let submit: any = null;
@@ -108,7 +109,7 @@ watch(showModal, () => {
 });
 // -----------------------------------------PocketBase----------------------------------------
 onMounted(async () => {
-  let pb = new PocketBase("http://127.0.0.1:8090");
+  let pb = new PocketBase(config.public.PB_ENDPOINT);
   const owner = pb.authStore.model?.id;
   if (!owner) router.push("/signin");
   submit = async () => {

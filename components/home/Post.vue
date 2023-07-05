@@ -48,7 +48,9 @@
 
 <script setup lang="ts">
 import PocketBase from "pocketbase";
-let pb = new PocketBase("http://127.0.0.1:8090");
+
+const config = useRuntimeConfig() as any;
+let pb = new PocketBase(config.public.PB_ENDPOINT);
 const props = defineProps<{ record: any }>();
 
 let imageUrl: string;

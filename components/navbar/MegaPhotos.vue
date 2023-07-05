@@ -41,9 +41,10 @@
 <script setup lang="ts">
 import PocketBase from "pocketbase";
 
+const config = useRuntimeConfig() as any;
 const tags = ref();
 onMounted(async () => {
-  const pb = new PocketBase("http://127.0.0.1:8090");
+  const pb = new PocketBase(config.public.PB_ENDPOINT);
   tags.value = (await pb.collection("tags").getList(1, 15)).items;
   console.log(tags.value);
 });

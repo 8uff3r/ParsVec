@@ -357,6 +357,7 @@
 <script setup lang="ts">
 import PocketBase from "pocketbase";
 
+const config = useRuntimeConfig() as any;
 const file = ref();
 let submit: any = null;
 let uploadFile: any;
@@ -374,7 +375,7 @@ const data = ref({
 });
 
 onMounted(async () => {
-  let pb = new PocketBase("http://127.0.0.1:8090");
+  let pb = new PocketBase(config.public.PB_ENDPOINT);
   const owner = pb.authStore.model;
   if (!owner?.id) {
     console.log("owner is null");
