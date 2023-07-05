@@ -20,7 +20,7 @@
                   <a
                     href="https://dribbble.com/Rengised"
                     class="cursor-pointer"
-                    >{{ user.name }}</a
+                    >{{ user?.name }}</a
                   >
                 </div>
 
@@ -84,14 +84,14 @@
       <div class="flex my-7 overflow-hidden">
         <div class="flex">
           <div class="flex">
-            <NuxtLink
-              :href="imageUrl"
-              class="text-pink-500 cursor-pointer object-cover z-[1] rounded-lg overflow-hidden"
+            <div
+              class="text-pink-500 object-cover z-[1] rounded-lg overflow-hidden"
             >
               <img
                 :src="imageUrl"
-                class="object-cover h-[37.17rem] w-[49.56rem] z-[1] rounded-lg overflow-hidden"
-            /></NuxtLink>
+                class="object-contain  h-[37.17rem] w-[49.56rem] z-[1] rounded-lg overflow-hidden"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -243,22 +243,17 @@
 </template>
 
 <script setup lang="ts">
-import { useUserAvatar } from "../../composables/useUserAvatar";
+import PocketBase, { Record } from "pocketbase";
 
+const router = useRouter();
+const pb = new PocketBase("http://127.0.0.1:8090");
 const route = useRoute();
-const postId = route.params.id;
-const post = await usePostData(postId as string);
-const user = (
-  await useFetch("/api/user/binfo", {
-    method: "get",
-    query: {
-      user: post.owner,
-    },
-  })
-).data.value;
+const postId = route.params.id as string;
+const post = await pb.collection("posts").getOne(postId, { expand: "owner" });
+const user = post.expand.owner as Record;
 
-const avatarUrl = useUserAvatar(post.owner);
-const imageUrl = usePostImageUrl(post.$id);
+const avatarUrl = pb.getFileUrl(user as any, user?.avatar);
+const imageUrl = pb.files.getUrl(post, post.file);
 </script>
 
 <style scoped></style>

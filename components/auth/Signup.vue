@@ -54,7 +54,7 @@
       </div>
 
       <!-- Form -->
-      <form @submit.prevent="submit">
+      <form @submit.prevent="doCreateAccount">
         <div class="grid gap-y-4">
           <!-- Form Group -->
           <div>
@@ -250,24 +250,40 @@
 </template>
 
 <script setup lang="ts">
+import PocketBase from "pocketbase";
+
+let pb: any = null;
 const emit = defineEmits(["success"]);
 const email = ref("");
 const password = ref("");
 const username = ref("");
 const usernameError = ref("");
+onMounted(async () => {
+  pb = new PocketBase("http://127.0.0.1:8090");
+});
 
-const { account, ID } = useAppwrite();
 const submit = async () => {
   console.log("submitting");
-  const res = await account
-    .create(ID.unique(), email.value, password.value)
-    .then(() => {
-      emit("success");
-    })
-    .catch((error) => {
-      usernameError.value = error;
+};
+
+const doCreateAccount = async () => {
+  try {
+    const data = {
+      username: username.value,
+      email: email.value,
+      emailVisibility: true,
+      password: password.value,
+      passwordConfirm: password.value,
+    };
+
+    const record = await pb.collection("users").create(data).then(()=>{
+      emit("success")
     });
-  console.log(res);
+
+    // await doLogin();
+  } catch (error: any) {
+    alert(error.message);
+  }
 };
 </script>
 

@@ -12,13 +12,15 @@ export default {
     "./Error.{js,ts,vue}",
     "./error.{js,ts,vue}",
     "./app.config.{js,ts}",
-    "node_modules/preline/dist/*.js",
+    // "node_modules/preline/dist/*.js",
   ],
   theme: {
     extend: {},
   },
   plugins: [
-    require("preline/plugin"),
+    // require("preline/plugin"),
+    require("rippleui"),
     require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
   ],
 };

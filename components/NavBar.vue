@@ -1,29 +1,25 @@
 <template>
   <div class="z-40">
     <header
-      class="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm"
+      class="flex flex-wrap md:justify-start md:flex-nowrap z-40 w-full text-sm"
     >
       <nav
-        class="mt-6 relative max-w-7xl w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700"
-        aria-label="Global"
+        class="mt-6 relative max-w-[90rem] w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700"
       >
         <div class="flex items-center justify-between">
           <NuxtLink
             class="flex-none text-xl font-semibold dark:text-white"
             to="/"
-            aria-label="Brand"
             >ParsVec</NuxtLink
           >
           <div class="md:hidden">
             <button
+              @click="toggleShowC"
               type="button"
-              class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
-              data-hs-collapse="#navbar-collapse-with-animation"
-              aria-controls="navbar-collapse-with-animation"
-              aria-label="Toggle navigation"
+              class="p-2 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
             >
               <svg
-                class="hs-collapse-open:hidden w-4 h-4"
+                class="w-4 h-4"
                 width="16"
                 height="16"
                 fill="currentColor"
@@ -35,7 +31,7 @@
                 />
               </svg>
               <svg
-                class="hs-collapse-open:block hidden w-4 h-4"
+                class="hidden w-4 h-4"
                 width="16"
                 height="16"
                 fill="currentColor"
@@ -49,27 +45,21 @@
           </div>
         </div>
         <div
-          id="navbar-collapse-with-animation"
-          class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block"
+          class="transition-all duration-300 basis-full grow md:block"
+          :class="showC ? 'block' : 'hidden'"
         >
           <div
             class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7"
           >
             <NuxtLink
               class="font-medium text-blue-600 md:py-6 dark:text-blue-500"
-              to="/home"
-              aria-current="page"
-              >Home</NuxtLink
+              to="/latest"
+              >Latest</NuxtLink
             >
             <a
               class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
               href="#"
-              >Account</a
-            >
-            <a
-              class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
-              href="#"
-              >Work</a
+              >Dashboard</a
             >
             <a
               class="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
@@ -77,7 +67,7 @@
               >Blog</a
             >
 
-            <template v-if="!isAuthed">
+            <template v-if="!store.isAuthed">
               <NuxtLink
                 class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-l md:border-gray-300 md:my-6 md:pl-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500"
                 to="/signin"
@@ -104,7 +94,7 @@
               >
                 Share Work
               </NuxtLink>
-              <AccDrop />
+              <NavbarAccDrop />
             </template>
           </div>
         </div>
@@ -114,10 +104,12 @@
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from "../stores/user";
-import AccDrop from "./navbar/AccDrop.vue";
-const store = useUserStore();
-const isAuthed = computed(() => store.userInfo != null);
+import { useAuthStore } from "../stores/user";
+const store = useAuthStore();
+let showC = ref(false);
+function toggleShowC() {
+  showC.value = !showC.value;
+}
 </script>
 
 <style scoped></style>

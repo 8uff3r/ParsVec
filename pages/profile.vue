@@ -13,7 +13,7 @@
           </p>
         </div>
 
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" ref="refForm">
           <!-- Grid -->
           <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
             <div class="sm:col-span-3">
@@ -27,15 +27,21 @@
 
             <div class="sm:col-span-9">
               <div class="flex items-center gap-5">
-                <img
-                  class="inline-block h-16 w-16 rounded-full ring-2 ring-white dark:ring-gray-800"
-                  nuxt-link="../assets/img/160x160/img1.jpg"
-                  alt="Image Description"
-                />
+                <div
+                  class="inline-block h-16 w-16 bg-black rounded-full ring-2 ring-white dark:ring-gray-800 overflow-clip"
+                >
+                  <input
+                    type="file"
+                    name="avatar"
+                    ref="file"
+                    class="opacity-0 h-full w-full cursor-pointer"
+                  />
+                </div>
                 <div class="flex gap-x-2">
                   <div>
                     <button
                       type="button"
+                      @click="uploadFile"
                       class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
                     >
                       <svg
@@ -101,13 +107,13 @@
                 <input
                   id="af-account-full-name"
                   type="text"
-                  v-model="name"
+                  v-model="data.name"
                   class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm -mt-px -ml-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-l-lg sm:mt-0 sm:first:ml-0 sm:first:rounded-tr-none sm:last:rounded-bl-none sm:last:rounded-r-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                   placeholder="Maria"
                 />
                 <input
                   type="text"
-                  v-model="lname"
+                  v-model="data.lastname"
                   class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm -mt-px -ml-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-l-lg sm:mt-0 sm:first:ml-0 sm:first:rounded-tr-none sm:last:rounded-bl-none sm:last:rounded-r-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                   placeholder="Boone"
                 />
@@ -115,6 +121,26 @@
             </div>
             <!-- End Col -->
 
+            <div class="sm:col-span-3">
+              <label
+                for="af-account-username"
+                class="inline-block text-sm text-gray-800 mt-2.5 dark:text-gray-200"
+              >
+                Username
+              </label>
+            </div>
+            <!-- End Col -->
+
+            <div class="sm:col-span-9">
+              <input
+                id="af-account-username"
+                type="username"
+                v-model="data.username"
+                class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+                placeholder="bernard"
+              />
+            </div>
+            <!-- End Col -->
             <div class="sm:col-span-3">
               <label
                 for="af-account-email"
@@ -129,7 +155,7 @@
               <input
                 id="af-account-email"
                 type="email"
-                v-model="email"
+                v-model="data.email"
                 class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                 placeholder="maria@site.com"
               />
@@ -151,11 +177,13 @@
                 <input
                   id="af-account-password"
                   type="text"
+                  v-model="data.oldPassword"
                   class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                   placeholder="Enter current password"
                 />
                 <input
                   type="text"
+                  v-model="data.password"
                   class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                   placeholder="Enter new password"
                 />
@@ -183,7 +211,7 @@
                 <input
                   id="af-account-phone"
                   type="text"
-                  v-model="phone"
+                  v-model="data.phone"
                   class="py-2 px-3 pr-11 block w-full border-gray-200 shadow-sm -mt-px -ml-px first:rounded-t-lg last:rounded-b-lg sm:first:rounded-l-lg sm:mt-0 sm:first:ml-0 sm:first:rounded-tr-none sm:last:rounded-bl-none sm:last:rounded-r-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                   placeholder="+x(xxx)xxx-xx-xx"
                 />
@@ -234,7 +262,7 @@
                   <input
                     type="radio"
                     name="af-account-gender-checkbox"
-                    v-model="gender"
+                    v-model="data.gender"
                     value="male"
                     class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                     id="af-account-gender-checkbox"
@@ -251,7 +279,7 @@
                   <input
                     type="radio"
                     name="af-account-gender-checkbox-female"
-                    v-model="gender"
+                    v-model="data.gender"
                     value="female"
                     class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                     id="af-account-gender-checkbox-female"
@@ -269,7 +297,7 @@
                     type="radio"
                     name="af-account-gender-checkbox-other"
                     class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                    v-model="gender"
+                    v-model="data.gender"
                     value="other"
                     id="af-account-gender-checkbox-other"
                   />
@@ -296,7 +324,7 @@
                 id="af-account-bio"
                 class="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                 rows="6"
-                v-model="bio"
+                v-model="data.bio"
                 placeholder="Type your message..."
               ></textarea>
             </div>
@@ -327,50 +355,59 @@
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from "../stores/user";
-interface dataType {
-  email: string;
-  name: string;
-  lastname: string;
-  gender: string;
-  bio: string;
-  phone: number;
-}
-const userStore = useUserStore();
-const profileData = (await useFetch("/api/user/profile")).data as Ref<dataType>;
-console.log("profileData is: ", profileData.value);
-if (!profileData) {
-  userStore.setUserInfo(null)
-}
-const email = ref(profileData.value?.email);
-const name = ref(profileData.value?.name);
-const lname = ref(profileData.value?.lastname);
-const gender = ref(profileData.value?.gender);
-const bio = ref(profileData.value?.bio);
-const phone = ref(profileData.value?.phone);
-const headers = useRequestHeaders(['cookie'])
+import PocketBase from "pocketbase";
 
-const submit = async () => {
-  console.log(name.value, email.value);
-  const { data, pending, error, refresh } = await useFetch(
-    "/api/user/profile",
-    {
-      headers,
-      body: {
-        name: name.value,
-        lastname: lname.value,
-        email: email.value,
-        gender: gender.value,
-        bio: bio.value,
-        phone: phone.value,
-      },
-      method: "post",
-    }
-  );
-  if (error) {
-    console.log(error)
+const file = ref();
+let submit: any = null;
+let uploadFile: any;
+const data = ref({
+  name: "",
+  email: "",
+  lastname: "",
+  gender: "",
+  bio: "",
+  phone: "",
+  password: "",
+  passwordConfirm: "",
+  oldPassword: "",
+  username: "",
+});
+
+onMounted(async () => {
+  let pb = new PocketBase("http://127.0.0.1:8090");
+  const owner = pb.authStore.model;
+  if (!owner?.id) {
+    console.log("owner is null");
+    navigateTo("/signin");
+    return;
   }
-};
+    console.log("owner is not null",owner);
+  const record = await pb.collection("users").getOne(owner.id);
+  console.log("init: ", record);
+  data.value = record as any;
+  const refForm = ref(null);
+
+  uploadFile = async () => {
+    const formData = new FormData();
+    formData.append("avatar", file.value.files[0]);
+    await pb.collection("users").update(owner.id, formData);
+  };
+
+  submit = async () => {
+    console.log(refForm);
+    const record = await pb.collection("users").update(owner.id, {
+      email: data.value.email,
+      name: data.value.name,
+      lastname: data.value.lastname,
+      gender: data.value.gender,
+      bio: data.value.bio,
+      phone: data.value.phone,
+      oldPassword: data.value.oldPassword,
+      password: data.value.password,
+      passwordConfirm: data.value.password,
+    });
+  };
+});
 </script>
 
 <style scoped></style>

@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
-export const useUserStore = defineStore("user", () => {
-  const userInfo = ref();
-  const setUserInfo = (val: any) => userInfo.value = val;
+import PocketBase from "pocketbase";
+export const useAuthStore = defineStore("auth", () => {
+  const isAuthed = ref(false);
+  const setAuthed = (val: boolean) => isAuthed.value = val;
 
-  return { userInfo, setUserInfo };
+  return { isAuthed, setAuthed };
 }, {
   persist: {
     storage: persistedState.localStorage,

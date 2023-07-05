@@ -194,23 +194,36 @@
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from "../stores/user";
+import { useAuthStore } from "../stores/user";
+import PocketBase from "pocketbase";
 
-const userStore = useUserStore();
+let pb: any = null;
+const store = useAuthStore()
+
+onMounted(async () => {
+  pb = new PocketBase("http://127.0.0.1:8090");
+});
+
 const email = ref("admin@gmail.com");
 const password = ref("a1d2m3i4n5");
-const { account } = useAppwrite();
 const router = useRouter();
 
 const submit = async () => {
-  const res = await account
-    .createEmailSession(email.value, password.value)
-    .then((value) => {
-      userStore.setUserInfo(value);
-      router.push("/");
-      return value;
-    });
-  console.log("The Res is: ", res);
+  await doLogin();
+};
+const doLogin = async () => {
+  try {
+    const authData = await pb
+      .collection("users")
+      .authWithPassword(email.value, password.value)
+      .then((res: any) => {
+        store.setAuthed(true)
+        router.push("/latest");
+        return res;
+      });
+  } catch (error: any) {
+    alert(error.message);
+  }
 };
 </script>
 

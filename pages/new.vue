@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center dark:text-gray-400 justify-center m-8">
-    <form class="flex flex-col" @submit.prevent="submitForm">
+    <form class="flex flex-col" @submit.prevent="submit">
       <input
         type="text"
         name="title"
@@ -74,58 +74,77 @@
       </button>
     </form>
   </div>
+  <Teleport to="body">
+    <SuccessModal v-model:show="showModal" :key="fileInputKey" />
+  </Teleport>
 </template>
 
 <script setup lang="ts">
-import axios from "axios";
+import SuccessModal from "../components/new/SuccessModal.vue";
+import PocketBase from "pocketbase";
+
+const router = useRouter();
+
+let submit: any = null;
 const active = ref(false);
 
 const toggleActive = () => {
   active.value = !active.value;
 };
 
+const fileInputKey = ref(0);
 const title = ref("");
 const desc = ref("");
 const file = ref();
 const success = ref(true);
 const message = ref("");
-const submitForm = () => {
-  const formData = new FormData();
-  console.log(file.value.files[0]);
-  formData.append("file", file.value.files[0]);
-  formData.append("title", title.value);
-  formData.append("desc", desc.value);
-  formData.append("tags", JSON.stringify(tags.value));
-  axios
-    .post(
-      "/api/post/new",
-      formData,
+const showModal = ref(false);
 
-      {
-        headers: { "Content-Type": "multipart/form-data"  },
-        withCredentials: true,
-      }
-    )
-    .then(() => {
-      success.value = true;
-      message.value = "Upload Was Successful";
-    })
-    .catch(() => {
-      success.value = false;
-      message.value = "Error";
-    });
-};
-
+watch(showModal, () => {
+  message.value = "";
+  title.value = "";
+  desc.value = "";
+  file.value.value = null;
+});
+// -----------------------------------------PocketBase----------------------------------------
+onMounted(async () => {
+  let pb = new PocketBase("http://127.0.0.1:8090");
+  const owner = pb.authStore.model?.id;
+  if (!owner) router.push("/signin");
+  submit = async () => {
+    if (owner) {
+      const formData = new FormData();
+      formData.append("file", file.value.files[0]);
+      formData.append("owner", owner);
+      formData.append("title", title.value);
+      formData.append("desc", desc.value);
+      // formData.append("tags", JSON.stringify(tags.value));
+      await pb
+        .collection("posts")
+        .create(formData)
+        .then(() => {
+          success.value = true;
+          message.value = "Upload Was Successful";
+          showModal.value = true;
+          // navigateTo("/");
+        })
+        .catch(() => {
+          success.value = false;
+          message.value = "Error";
+        });
+    }
+  };
+});
 // ---------------TagsInput-----------------
-const tags = ref([]);
+const tags: Ref<string[]> = ref([]);
 const newTag = ref("");
 
-const addTag = (tag) => {
+const addTag = (tag: string) => {
   tags.value.push(tag); // add the new tag to the tags array
   newTag.value = "";
 };
 
-const removeTag = (index) => {
+const removeTag = (index: number) => {
   tags.value.splice(index, 1);
 };
 </script>
