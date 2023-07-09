@@ -101,6 +101,10 @@
       </nav>
     </header>
   </div>
+
+  <div class="ml-4 sm:ml-8 md:ml-16 lg:ml-28 xl:ml-36 relative mt-2 z-50">
+    <NavbarMegaPhotos />
+  </div>
 </template>
 
 <script setup lang="ts">

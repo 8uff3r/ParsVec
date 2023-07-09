@@ -19,7 +19,7 @@
       </svg>
     </label>
     <div
-      class="dropdown-menu dropdown-menu-bottom-right bg-gray-800 lg:w-[40rem] xl:w-[70rem] mt-1 absolute"
+      class="dropdown-menu dropdown-menu-bottom-right dark:bg-gray-800 lg:w-[40rem] xl:w-[70rem] mt-1 absolute"
     >
       <div
         class="grid grid-cols-1 space-y-6 gap-x-4 gap-y-0 lg:grid-cols-3 w-full"
@@ -28,7 +28,7 @@
           :to="`/tags/${tag.name}`"
           v-for="(tag, index) in tags"
           :key="index"
-          class="dropdown-item w-full text-sm hover:bg-slate-700 h-full"
+          class="dropdown-item w-full text-sm dark:hover:bg-slate-700 h-full"
           style="margin-top: 0 !important"
         >
           {{ tag.name }}

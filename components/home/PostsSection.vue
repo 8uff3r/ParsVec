@@ -2,7 +2,7 @@
   <!-- Card Blog -->
   <div class="px-4 py-10 sm:px-6 lg:px-32 lg:py-14 mx-auto">
     <!-- Grid -->
-    <div class="grid lg:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
       <div v-for="(post, index) in posts" :key="index">
         <Post
           :record="post"
@@ -20,26 +20,15 @@ import PocketBase from "pocketbase";
 import Post from "./Post.vue";
 
 const config = useRuntimeConfig() as any;
-const props = defineProps({
-  search: { type: String, default: "" },
-});
 const posts = ref();
 onMounted(async () => {
   const pb = new PocketBase(config.public.PB_ENDPOINT);
-  watch(
-    () => props.search,
-    async () => {
-      posts.value = (
-        await pb.collection("posts").getList(1, 100, {
-          sort: "-created",
-          expand: "owner",
-          filter: `title ~ '${props.search}'`,
-        })
-      ).items;
-      console.log("posts are: ", posts.value);
-    },
-    { immediate: true }
-  );
+  posts.value = (
+    await pb.collection("posts").getList(1, 100, {
+      sort: "-created",
+      expand: "owner",
+    })
+  ).items;
 });
 
 function timeout(ms: number) {

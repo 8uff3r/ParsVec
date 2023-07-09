@@ -114,6 +114,7 @@ onMounted(async () => {
   if (!owner) router.push("/signin");
   submit = async () => {
     if (owner) {
+      console.log("owner is:", owner);
       const formData = new FormData();
       formData.append("file", file.value.files[0]);
       formData.append("owner", owner);
@@ -129,9 +130,10 @@ onMounted(async () => {
           showModal.value = true;
           // navigateTo("/");
         })
-        .catch(() => {
+        .catch((err) => {
           success.value = false;
           message.value = "Error";
+          alert(err);
         });
     }
   };

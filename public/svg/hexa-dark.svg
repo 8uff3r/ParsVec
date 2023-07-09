@@ -1,0 +1,22 @@
+<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
+
+<defs>
+<pattern id='a' patternUnits='userSpaceOnUse' width='29' height='50.115' patternTransform='scale(2) rotate(40)'>
+<rect x='0' y='0' width='100%' height='100%' fill='hsla(0,0%,100%,1)'/>
+<path d='M14.499 11.82L4.36 5.968l.002-11.706 10.14-5.855L24.638-5.74l-.001 11.707zm0 50.06L4.36 56.029l.002-11.706 10.14-5.855 10.137 5.852-.001 11.707zm14.498-25.117L18.858 30.91l.002-11.707L29 13.349l10.137 5.853-.001 11.706zm-29 0l-10.139-5.852.002-11.707L0 13.349l10.138 5.853-.002 11.706zm14.501-19.905L0 8.488.002-8.257l14.5-8.374L29-8.26l-.002 16.745zm0 50.06L0 58.548l.002-16.745 14.5-8.373L29 41.8l-.002 16.744zM28.996 41.8l-14.498-8.37.002-16.744L29 8.312l14.498 8.37-.002 16.745zm-29 0l-14.498-8.37.002-16.744L0 8.312l14.498 8.37-.002 16.745z'  stroke-linecap='square' stroke-width='0.9' stroke='hsl(223, 63%, 35%)' fill='#0F172A'/>
+
+</pattern>
+
+<mask id="mask0" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="-38" width="100%" height="100%">
+<rect y="-38"  width="100%" height="100%" fill="url(#paint0_linear_6907_192562)"/>
+</mask>
+
+<linearGradient id="paint0_linear_6907_192562" x1="0" y1="0" x2="0" y2="80%" gradientUnits="userSpaceOnUse">
+<stop stop-color="#2563EB"/>
+<stop offset="0.706076" stop-color="#6246EC" stop-opacity="0"/>
+<stop offset="1" stop-color="#7C3AED" stop-opacity="0"/>
+</linearGradient>
+</defs>
+<rect width='100%' height='100%' opacity="0.5" fill='url(#a)' mask="url(#mask0)"/>
+</svg>
+

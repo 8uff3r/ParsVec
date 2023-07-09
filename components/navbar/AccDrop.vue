@@ -1,8 +1,8 @@
 <template>
   <div class="dropdown-container">
-    <div class="dropdown">
+    <div class="dropdown transition-all">
       <label
-        class="p-6 btn btn-solid-primary my-2 border font-medium text-gray-700 shadow-sm align-middle focus:outline-none bg-white hover:bg-white hover:dark:bg-gray-800 dark:bg-gray-800 transition-all text-sm dark:border-gray-700 dark:text-gray-400"
+        class="p-6 btn btn-solid-primary my-2 border font-medium text-gray-700 shadow-sm align-middle focus:outline-none bg-inherit hover:bg-white hover:dark:bg-gray-800 dark:bg-gray-800 transition-all text-sm dark:border-gray-700 dark:text-gray-400"
         tabindex="0"
       >
         <span class="mr-2">Account </span>
@@ -23,9 +23,9 @@
         </svg>
       </label>
       <div
-        class="z-50 dropdown-menu left-[100%] top-0 ml-3 md:top-auto md:ml-auto md:left-auto md:dropdown-menu-bottom-left transition-[opacity,margin] duration min-w-[15rem] bg-white shadow-md rounded-lg px-2 dark:bg-gray-800 dark:border dark:border-gray-700"
+        class="z-50 dropdown-menu left-[100%] ease-in-out duration-500 top-0 ml-3 bg-inherit backdrop-blur md:top-auto md:ml-auto md:left-auto md:dropdown-menu-bottom-left transition-[opacity,margin] duration min-w-[15rem] shadow-md rounded-lg px-2 dark:bg-gray-800 dark:border dark:border-gray-700"
       >
-        <div class="py-3 px-5 -m-2 bg-gray-100 rounded-t-lg dark:bg-gray-700">
+        <div class="py-3 px-5 -m-2 bg-gray-200 rounded-t-lg dark:bg-gray-700">
           <p class="text-sm text-gray-500 dark:text-gray-400">Signed in as</p>
           <p class="text-sm font-medium text-gray-800 dark:text-gray-300">
             {{ user }}
@@ -69,6 +69,29 @@
             </svg>
             Profile
           </NuxtLink>
+          <button
+            @click="logout"
+            class="dropdown-item flex flex-row items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+            to="/profile"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="flex-none"
+              width="16"
+              height="16"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
+              />
+            </svg>
+            Logout
+          </button>
         </div>
       </div>
     </div>
@@ -77,13 +100,22 @@
 
 <script setup lang="ts">
 import PocketBase from "pocketbase";
+import { useAuthStore } from "../../stores/user";
+const store = useAuthStore();
+
+const router = useRouter();
 
 const config = useRuntimeConfig() as any;
-let pb: any = null;
+let logout: () => void;
 const user = ref("");
 onMounted(async () => {
-  pb = new PocketBase(config.public.PB_ENDPOINT);
-  user.value = pb.authStore.model.email;
+  const pb = new PocketBase(config.public.PB_ENDPOINT);
+  user.value = pb.authStore.model?.email;
+  logout = () => {
+    pb.authStore.clear();
+    store.setAuthed(false);
+    router.push("/");
+  };
 });
 </script>
 

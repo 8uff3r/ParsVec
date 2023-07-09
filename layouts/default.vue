@@ -1,10 +1,7 @@
 <template>
-  <div class="dark:bg-slate-900 overflow-clip">
-    <div class="max-w-[90%] mx-auto">
+  <div class="dark:bg-slate-900 bg-white overflow-clip relative">
+    <div class="max-w-[90%] mx-auto z-[100] relative">
       <NavBar />
-    </div>
-    <div class="ml-36 mt-2">
-      <NavbarMegaPhotos />
     </div>
     <div class="min-h-screen">
       <slot />
@@ -13,7 +10,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>

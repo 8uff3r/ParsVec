@@ -1,14 +1,15 @@
 <template>
-  <div class="dark:bg-slate-900">
+  <div class="dark:bg-slate-900 z-50">
     <!-- Hero -->
-    <div
-      class="relative overflow-hidden before:absolute before:top-0 before:left-1/2 bg-[url('/svg/polygon.svg')] before:bg-no-repeat before:bg-top bg-cover before:w-full before:h-full before:-z-[1] before:transform before:-translate-x-1/2 dark:bg-[url('/svg/polygon-dark.svg')]"
-    >
-      <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
+    <div class="relative overflow-visible z-50 bg-cover">
+      <div
+        class="absolute bg-[url('/svg/hexa.svg')] dark:bg-[url('/svg/hexa-dark.svg')] h-screen w-screen inset-0 z-[-3] -mt-40"
+      ></div>
+      <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-5">
         <!-- Announcement Banner -->
         <div class="flex justify-center">
           <NuxtLink
-            class="inline-flex items-center gap-x-2 bg-white border border-gray-200 text-sm text-gray-800 p-1 pl-3 rounded-full transition hover:border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:hover:border-gray-600 dark:text-gray-200"
+            class="inline-flex items-center gap-x-2 bg-white border border-gray-200 text-sm text-gray-800 p-1 pl-3 rounded-full transition hover:border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:hover:border-cyan-700 dark:text-gray-200"
             to="pricing"
           >
             SignUp for PRO
@@ -50,17 +51,16 @@
 
         <div class="mt-5 max-w-3xl text-center mx-auto">
           <p class="text-lg text-gray-600 dark:text-gray-400">
-            Preline UI is an open-source set of prebuilt UI components,
-            ready-to-use examples and Figma design system based on the
-            utility-first Tailwind CSS framework.
+            Collaborate and connect with fellow designers from around the world
+            on our platform, where creativity knows no bounds.
           </p>
         </div>
 
         <!-- Buttons -->
         <div class="mt-8 grid gap-3 w-full sm:inline-flex sm:justify-center">
-          <a
+          <NuxtLink
             class="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-blue-600 to-violet-600 hover:from-violet-600 hover:to-blue-600 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white py-3 px-4 dark:focus:ring-offset-gray-800"
-            href="#"
+            to="/signin"
           >
             Get started
             <svg
@@ -77,58 +77,24 @@
                 stroke-linecap="round"
               />
             </svg>
-          </a>
+          </NuxtLink>
         </div>
         <!-- End Buttons -->
 
-        <div class="mt-5 flex justify-center items-center gap-x-1 sm:gap-x-3">
-          <span class="text-sm text-gray-600 dark:text-gray-400"
-            >Package Manager:</span
-          >
-          <span class="text-sm font-bold text-gray-900 dark:text-white"
-            >npm</span
-          >
-          <svg
-            class="h-5 w-5 text-gray-300 dark:text-gray-600"
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path d="M6 13L10 3" stroke="currentColor" stroke-linecap="round" />
-          </svg>
-          <a
-            class="inline-flex items-center gap-x-1.5 text-sm text-blue-600 decoration-2 hover:underline font-medium"
-            href="#"
-          >
-            Installation Guide
-            <svg
-              class="w-2.5 h-2.5"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-            >
-              <path
-                d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-            </svg>
-          </a>
+        <div class="mt-5 flex justify-center items-center">
+          <IndexSearchInput />
         </div>
       </div>
     </div>
     <!-- End Hero -->
     <!-- Icon Blocks -->
-    <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+    <div class="max-w-[85rem] pb-10 px-4 sm:px-6 lg:px-8 lg:pb-14 mx-auto">
       <div class="max-w-4xl mx-auto">
         <!-- Grid -->
-        <div class="grid md:grid-cols-2 gap-6 lg:gap-12">
-          <div class="space-y-6 lg:space-y-10">
+        <div
+          class="grid md:grid-rows-2 lg:gap-6 py-8 px-10 shadow-[0_3px_6px_hsla(0,0%,0%,0.15),0_6px_4px_hsla(0,0%,0%,0.12),0_-1px_4px_hsla(0,0%,0%,0.05)] rounded-xl gap-4"
+        >
+          <div class="grid md:grid-cols-2 gap-4 items-baseline">
             <!-- Icon Block -->
             <div class="flex">
               <svg
@@ -153,36 +119,9 @@
                   Creative minds
                 </h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  We choose our teams carefully. Our people are the secret to
-                  great work.
-                </p>
-              </div>
-            </div>
-            <!-- End Icon Block -->
-
-            <!-- Icon Block -->
-            <div class="flex">
-              <svg
-                class="flex-shrink-0 mt-2 h-8 w-8 text-gray-800 dark:text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"
-                />
-              </svg>
-              <div class="ml-5 sm:ml-8">
-                <h3
-                  class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"
-                >
-                  Effortless updates
-                </h3>
-                <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  Benefit from automatic updates to all boards any time you need
-                  to make a change to your website.
+                  Unleash your creativity and connect with like-minded
+                  individuals on platform designed exclusively for the world's
+                  most innovative and imaginative minds.
                 </p>
               </div>
             </div>
@@ -209,8 +148,9 @@
                   Strong empathy
                 </h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  We've user tested our own process by shipping over 1k products
-                  for clients.
+                  Experience the power of design through the lens of empathy,
+                  with our platform built to connect and inspire designers
+                  worldwide.
                 </p>
               </div>
             </div>
@@ -218,63 +158,7 @@
           </div>
           <!-- End Col -->
 
-          <div class="space-y-6 lg:space-y-10">
-            <!-- Icon Block -->
-            <div class="flex">
-              <svg
-                class="flex-shrink-0 mt-2 h-8 w-8 text-gray-800 dark:text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"
-                />
-              </svg>
-              <div class="ml-5 sm:ml-8">
-                <h3
-                  class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"
-                >
-                  Conquer the best
-                </h3>
-                <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  We stay lean and help your product do one thing well.
-                </p>
-              </div>
-            </div>
-            <!-- End Icon Block -->
-
-            <!-- Icon Block -->
-            <div class="flex">
-              <svg
-                class="flex-shrink-0 mt-2 h-8 w-8 text-gray-800 dark:text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="m8 2.42-.717-.737c-1.13-1.161-3.243-.777-4.01.72-.35.685-.451 1.707.236 3.062C4.16 6.753 5.52 8.32 8 10.042c2.479-1.723 3.839-3.29 4.491-4.577.687-1.355.587-2.377.236-3.061-.767-1.498-2.88-1.882-4.01-.721L8 2.42Zm-.49 8.5c-10.78-7.44-3-13.155.359-10.063.045.041.089.084.132.129.043-.045.087-.088.132-.129 3.36-3.092 11.137 2.624.357 10.063l.235.468a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3.177 3.177 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.235-.468ZM6.013 2.06c-.649-.18-1.483.083-1.85.798-.131.258-.245.689-.08 1.335.063.244.414.198.487-.043.21-.697.627-1.447 1.359-1.692.217-.073.304-.337.084-.398Z"
-                />
-              </svg>
-              <div class="ml-5 sm:ml-8">
-                <h3
-                  class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"
-                >
-                  Designing for people
-                </h3>
-                <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  We actively pursue the right balance between functionality and
-                  aesthetics, creating delightful experiences.
-                </p>
-              </div>
-            </div>
-            <!-- End Icon Block -->
-
+          <div class="justify-between grid items-baseline gap-4 md:grid-cols-2">
             <!-- Icon Block -->
             <div class="flex">
               <svg
@@ -296,8 +180,36 @@
                   Simple and affordable
                 </h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  From boarding passes to movie tickets, there's pretty much
-                  nothing you can't store with Preline.
+                  User-friendly and budget-friendly, designed to simplify the
+                  process of showcasing your design work to a global audience.
+                </p>
+              </div>
+            </div>
+            <!-- End Icon Block -->
+
+            <!-- Icon Block -->
+            <div class="flex">
+              <svg
+                class="flex-shrink-0 mt-2 h-8 w-8 text-gray-800 dark:text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"
+                />
+              </svg>
+              <div class="ml-5 sm:ml-8">
+                <h3
+                  class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"
+                >
+                  Conquer the best
+                </h3>
+                <p class="mt-1 text-gray-600 dark:text-gray-400">
+                  Join our community of top designers and showcase your best
+                  work to conquer the design world.
                 </p>
               </div>
             </div>
@@ -315,12 +227,12 @@
       Checkout the latest posts from our commiunity
     </h2>
     <div
-      class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8 px-8 sm:px-24"
+      class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-8 sm:px-24"
     >
       <div v-for="(post, index) in posts" :key="index" class="">
-        <Post
+        <IndexPost
           :record="post"
-          class="flex-shrink-0 relative rounded-xl overflow-hidden w-full min-h-[350px] before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1]"
+          class="text-sm flex-shrink-0 relative rounded-xl overflow-hidden w-full min-h-[350px] before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1]"
         />
       </div>
     </div>
@@ -348,145 +260,107 @@
         </svg>
       </NuxtLink>
     </div>
-    <div class="px-16">
-      <!-- Card Blog -->
-      <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <!-- Title -->
-        <div class="max-w-2xl mb-10">
+
+    <section class="bg-slate-100 dark:bg-slate-900">
+      <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
           <h2
-            class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white"
+            class="text-3xl font-bold text-gray-900 dark:text-gray-100 sm:text-4xl"
           >
-            Customer stories
+            Trusted by designers around the globe
           </h2>
-          <p class="mt-1 text-gray-600 dark:text-gray-400">
-            See how game-changing companies are making the most of every
-            engagement with Preline.
-          </p>
         </div>
-        <!-- End Title -->
 
-        <!-- Grid -->
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Card -->
-          <a class="group block" href="#">
-            <div class="aspect-w-16 aspect-h-9">
-              <img
-                class="w-full object-cover rounded-xl"
-                nuxt-link="https://images.unsplash.com/photo-1668869713519-9bcbb0da7171?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=988&q=80"
-                alt="Image Description"
-              />
-            </div>
-            <h3
-              class="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white"
+        <div class="mt-8 sm:mt-12">
+          <dl class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div
+              class="flex flex-col rounded-lg bg-blue-100 dark:bg-slate-800 px-4 py-8 text-center"
             >
-              Unity’s inside sales team drives 80% of its revenue with Preline.
-            </h3>
-            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              September 12, 2022
-            </p>
-          </a>
-          <!-- End Card -->
+              <dt class="order-last text-lg font-medium text-gray-500">
+                Total Sales
+              </dt>
 
-          <!-- Card -->
-          <a class="group block" href="#">
-            <div class="aspect-w-16 aspect-h-9">
-              <img
-                class="w-full object-cover rounded-xl"
-                nuxt-link="https://images.unsplash.com/photo-1668584054035-f5ba7d426401?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3465&q=80"
-                alt="Image Description"
-              />
+              <dd class="text-4xl font-extrabold text-blue-600 md:text-5xl">
+                $4.8m
+              </dd>
             </div>
-            <h3
-              class="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white"
-            >
-              Living Spaces creates a unified experience across the customer
-              journey.
-            </h3>
-            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              September 12, 2022
-            </p>
-          </a>
-          <!-- End Card -->
 
-          <!-- Card -->
-          <a class="group block" href="#">
-            <div class="aspect-w-16 aspect-h-9">
-              <img
-                class="w-full object-cover rounded-xl"
-                nuxt-link="https://images.unsplash.com/photo-1668863699009-1e3b4118675d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80"
-                alt="Image Description"
-              />
-            </div>
-            <h3
-              class="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white"
+            <div
+              class="flex flex-col rounded-lg bg-blue-100 dark:bg-slate-800 px-4 py-8 text-center"
             >
-              Atlassian powers sales and support at scale with Preline.
-            </h3>
-            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              September 12, 2022
-            </p>
-          </a>
-          <!-- End Card -->
+              <dt class="order-last text-lg font-medium text-gray-500">
+                Official Addons
+              </dt>
 
-          <!-- Card -->
-          <a class="group block" href="#">
-            <div class="aspect-w-16 aspect-h-9">
-              <img
-                class="w-full object-cover rounded-xl"
-                nuxt-link="https://images.unsplash.com/photo-1668584054131-d5721c515211?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80"
-                alt="Image Description"
-              />
+              <dd class="text-4xl font-extrabold text-blue-600 md:text-5xl">
+                24
+              </dd>
             </div>
-            <h3
-              class="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white"
+
+            <div
+              class="flex flex-col rounded-lg bg-blue-100 px-4 py-8 dark:bg-slate-800 text-center"
             >
-              Everything you need to know about Preline Pro.
-            </h3>
-            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              September 12, 2022
-            </p>
-          </a>
-          <!-- End Card -->
+              <dt class="order-last text-lg font-medium text-gray-500">
+                Total Addons
+              </dt>
+
+              <dd class="text-4xl font-extrabold text-blue-600 md:text-5xl">
+                86
+              </dd>
+            </div>
+          </dl>
         </div>
-        <!-- End Grid -->
       </div>
-      <!-- End Card Blog -->
-    </div>
-  </div>
-  <div class="relative block h-[17rem] my-8">
-    <img
-      src="https://static.vecteezy.com/packs/media/components/home/sign-up-free/img/sign-up-free-mobile-18b5e43254aa2e23f5907b3ae4abee6f.jpg"
-      class="text-white absolute h-full object-cover z-10 w-full block"
-    />
-    <div class="text-white text-lg px-8 z-10 absolute">
-      <h2 class="text-[2.88rem] leading-none font-bold -mt-6">
-        Sign up free today!
-      </h2>
+    </section>
 
-      <p class="mb-8 mt-6">
-        Ready for a world of free vectors, photos and video from amazing artists
-        all over the world? Sign up free today.
-      </p>
+    <!--
+  Heads up! 👋
 
-      <a
-        href="https://www.vecteezy.com/users/sign_up?referring_conversions_category=Homepage"
-        class="items-center bg-white block text-orange-500 cursor-pointer flex-wrap font-semibold justify-center mb-8 py-3.5 px-6 text-center whitespace-nowrap rounded-"
-        >Sign Up Free</a
-      >
+  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
+-->
 
-      <span
-        >Want access to our entire library?
-        <NuxtLink to="/pricing" class="cursor-pointer"
-          >Join Pro.</NuxtLink
-        ></span
-      >
-    </div>
+    <section
+      class="overflow-hidden bg-gray-50 sm:grid sm:grid-cols-2 sm:items-center dark:bg-slate-900 bg-inherit "
+    >
+      <div class="p-8 md:p-12 lg:px-16 lg:py-24">
+        <div
+          class="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right"
+        >
+          <h2
+            class="text-2xl font-bold text-gray-900 dark:text-gray-100 md:text-3xl"
+          >
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit
+          </h2>
+
+          <p class="hidden text-gray-500 md:mt-4 md:block">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas
+            tempus tellus etiam sed. Quam a scelerisque amet ullamcorper eu enim
+            et fermentum, augue. Aliquet amet volutpat quisque ut interdum
+            tincidunt duis.
+          </p>
+
+          <div class="mt-4 md:mt-8">
+            <a
+              href="#"
+              class="inline-block rounded bg-emerald-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-emerald-700 focus:outline-none focus:ring focus:ring-yellow-400"
+            >
+              Get Started Today
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <img
+        alt="Violin"
+        src="/afoot.jpg"
+        class="h-full w-full object-cover sm:h-[calc(100%_-_2rem)] sm:self-end sm:rounded-ss-[30px] md:h-[calc(100%_-_4rem)] md:rounded-ss-[60px]"
+      />
+    </section>
   </div>
 </template>
 
 <script setup lang="ts">
 import PocketBase from "pocketbase";
-import Post from "@/components/home/Post.vue";
 
 const config = useRuntimeConfig() as any;
 const posts = ref();
@@ -504,10 +378,11 @@ const masonaryClass = (index: number) => {
     return `aspect-h-3 aspect-w-4`;
   }
 };
+
 onMounted(async () => {
   const pb = new PocketBase(config.public.PB_ENDPOINT);
   posts.value = (
-    await pb.collection("posts").getList(1, 12, {
+    await pb.collection("posts").getList(1, 15, {
       sort: "-created",
       expand: "owner",
     })
