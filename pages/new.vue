@@ -1,5 +1,16 @@
 <template>
-  <div class="flex items-center dark:text-gray-400 justify-center m-8">
+  <div class="flex items-center relative dark:text-gray-400 justify-center m-8">
+    <div
+      class="absolute inset-0 backdrop-blur-xl flex flex-col justify-center items-center"
+      :class="{ hidden: !showLoading }"
+    >
+      <div
+        class="animate-spin inline-block w-8 h-8 border-[8px] border-current border-t-transparent text-white rounded-full"
+        role="status"
+        aria-label="loading"
+      ></div>
+      <p>Uploading...</p>
+    </div>
     <form class="flex flex-col w-full md:w-[80%]" @submit.prevent="submit">
       <input
         type="text"
@@ -75,6 +86,7 @@ const file = ref();
 const success = ref(true);
 const message = ref("");
 const showModal = ref(false);
+const showLoading = ref(false);
 
 watch(showModal, () => {
   message.value = "";
@@ -88,6 +100,7 @@ onMounted(async () => {
   const owner = pb.authStore.model?.id;
   if (!owner) router.push("/signin");
   submit = async () => {
+    showLoading.value = true;
     if (owner) {
       console.log("owner is:", owner);
       const formData = new FormData();
@@ -102,10 +115,12 @@ onMounted(async () => {
         .then(() => {
           success.value = true;
           message.value = "Upload Was Successful";
+          showLoading.value = false;
           showModal.value = true;
           // navigateTo("/");
         })
         .catch((err) => {
+          showLoading.value = false;
           success.value = false;
           message.value = "Error";
           alert(err);
