@@ -102,7 +102,6 @@ onMounted(async () => {
   submit = async () => {
     showLoading.value = true;
     if (owner) {
-      console.log("owner is:", owner);
       const formData = new FormData();
       formData.append("file", file.value.files[0]);
       formData.append("owner", owner);

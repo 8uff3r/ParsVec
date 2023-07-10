@@ -59,7 +59,6 @@ const success = ref(true);
 const message = ref("");
 const submitFile = () => {
   const formData = new FormData();
-  console.log(file.value.files[0]);
   formData.append("file", file.value.files[0]);
 
   axios

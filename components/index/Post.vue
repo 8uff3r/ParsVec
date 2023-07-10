@@ -48,13 +48,13 @@ let avatarUrl: string;
 watch(
   () => props.record,
   () => {
-    console.log(props.record);
     imageUrl = pb.files.getUrl(props.record, props.record.file!, {
       thumb: "300x200",
     });
     avatarUrl = pb.files.getUrl(
       props.record.expand.owner,
-      props.record.expand.owner.avatar
+      props.record.expand.owner.avatar,
+      { thumb: "50x50" }
     );
   },
   { immediate: true }

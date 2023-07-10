@@ -1,5 +1,16 @@
 <template>
-  <div>
+  <div class="relative">
+    <div
+      class="absolute inset-0 backdrop-blur-xl flex flex-col justify-center items-center z-20"
+      :class="{ hidden: !pending }"
+    >
+      <div
+        class="animate-spin inline-block w-8 h-8 border-[8px] border-current border-t-transparent text-white rounded-full"
+        role="status"
+        aria-label="loading"
+      ></div>
+      <p>Loading...</p>
+    </div>
     <!-- Card Section -->
     <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
       <!-- Card -->
@@ -214,7 +225,6 @@
                   placeholder="+x(xxx)xxx-xx-xx"
                 />
               </div>
-
             </div>
             <!-- End Col -->
 
@@ -311,7 +321,6 @@
             <button
               type="button"
               @click="router.back()"
-  
               class="py-2 px-3 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
             >
               Cancel
@@ -332,7 +341,7 @@
 </template>
 
 <script setup lang="ts">
-import PocketBase from "pocketbase";
+import PocketBase, { Record, Admin } from "pocketbase";
 
 const config = useRuntimeConfig() as any;
 const file = ref();
@@ -351,30 +360,29 @@ const data = ref({
   username: "",
 });
 
-const router = useRouter()
-onMounted(async () => {
-  let pb = new PocketBase(config.public.PB_ENDPOINT);
-  const owner = pb.authStore.model;
-  if (!owner?.id) {
-    console.log("owner is null");
-    navigateTo("/signin");
+let owner: Record | Admin | null;
+let pb = new PocketBase(config.public.PB_ENDPOINT);
+owner = pb.authStore.model;
+if (!owner?.id) {
+  navigateTo("/signin");
+}
+const router = useRouter();
+const { pending } = useLazyAsyncData(async () => {
+  if (!owner?.id || !owner) {
     return;
   }
-  console.log("owner is not null", owner);
-  const record = await pb.collection("users").getOne(owner.id);
-  console.log("init: ", record);
+  const record = await pb.collection("users").getOne(owner?.id);
   data.value = record as any;
   const refForm = ref(null);
 
   uploadFile = async () => {
     const formData = new FormData();
     formData.append("avatar", file.value.files[0]);
-    await pb.collection("users").update(owner.id, formData);
+    await pb.collection("users").update(owner?.id!, formData);
   };
 
   submit = async () => {
-    console.log(refForm);
-    const record = await pb.collection("users").update(owner.id, {
+    const record = await pb.collection("users").update(owner?.id!, {
       email: data.value.email,
       name: data.value.name,
       lastname: data.value.lastname,
@@ -387,6 +395,7 @@ onMounted(async () => {
     });
   };
 });
+
 </script>
 
 <style scoped></style>

@@ -46,7 +46,6 @@ const tags = ref();
 onMounted(async () => {
   const pb = new PocketBase(config.public.PB_ENDPOINT);
   tags.value = (await pb.collection("tags").getList(1, 15)).items;
-  console.log(tags.value);
 });
 </script>
 

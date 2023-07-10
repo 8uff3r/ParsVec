@@ -3,7 +3,7 @@
     <!-- Hero -->
     <div class="relative overflow-visible z-50 bg-cover">
       <div
-        class="absolute bg-[url('/svg/hexa.svg')] dark:bg-[url('/svg/hexa-dark.svg')] h-screen w-screen inset-0 z-[-3] -mt-40"
+        class="absolute bg-[url('/svg/hexa.svg')] dark:bg-[url('/svg/hexa-dark.svg')] h-screen w-screen inset-0 z-[-3] -mt-80 md:-mt-40"
       ></div>
       <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-5">
         <!-- Announcement Banner -->
@@ -229,12 +229,21 @@
     <div
       class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-8 sm:px-24"
     >
-      <div v-for="(post, index) in posts" :key="index" class="">
-        <IndexPost
-          :record="post"
-          class="text-sm flex-shrink-0 relative rounded-xl overflow-hidden w-full min-h-[350px] before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1]"
-        />
-      </div>
+      <template v-if="!pending">
+        <div v-for="(post, index) in posts" :key="index" class="">
+          <IndexPost
+            :record="post"
+            class="text-sm flex-shrink-0 relative rounded-xl overflow-hidden w-full min-h-[350px] before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1]"
+          />
+        </div>
+      </template>
+      <template v-else>
+        <div v-for="n in 15" :key="n">
+          <LoadingImage
+            class="flex-shrink-0 relative rounded-xl overflow-hidden w-full min-h-[350px]"
+          />
+        </div>
+      </template>
     </div>
 
     <div class="flex justify-center w-full">
@@ -363,13 +372,12 @@
 import PocketBase from "pocketbase";
 
 const config = useRuntimeConfig() as any;
-const posts =
-  ref();
-  // Array(15).fill({
-  //   file: "",
-  //   id: "",
-  //   expand: { owner: { avatar: "", username: "" } },
-  // })
+const posts = ref();
+// Array(15).fill({
+//   file: "",
+//   id: "",
+//   expand: { owner: { avatar: "", username: "" } },
+// })
 const masonaryClass = (index: number) => {
   if (index % 4 === 0) {
     return `aspect-h-9 aspect-w-16`;
@@ -385,7 +393,7 @@ const masonaryClass = (index: number) => {
   }
 };
 
-onMounted(async () => {
+const { pending } = useLazyAsyncData(async () => {
   const pb = new PocketBase(config.public.PB_ENDPOINT);
   posts.value = (
     await pb.collection("posts").getList(1, 15, {
@@ -393,7 +401,6 @@ onMounted(async () => {
       expand: "owner",
     })
   ).items;
-  console.log("posts are: ", posts);
 });
 </script>
 

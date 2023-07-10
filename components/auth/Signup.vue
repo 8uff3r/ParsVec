@@ -263,9 +263,6 @@ onMounted(async () => {
   pb = new PocketBase(config.public.PB_ENDPOINT);
 });
 
-const submit = async () => {
-  console.log("submitting");
-};
 
 const doCreateAccount = async () => {
   try {

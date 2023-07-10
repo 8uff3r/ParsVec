@@ -34,8 +34,6 @@ onMounted(async () => {
       expand: "owner",
     })
   ).items;
-
-  console.log("posts are: ", posts.value);
 });
 </script>
 

@@ -28,7 +28,6 @@ onMounted(async () => {
     .collection("tags")
     .getFullList({ filter: `name ~ '${routeTag}'`, fields: "id" });
 
-  console.log("tags are:", tags[0].id);
   const postsRes = (
     await pb.collection("posts").getList(1, 12, {
       sort: "-created",
@@ -38,12 +37,6 @@ onMounted(async () => {
   ).items;
 
   posts.value = postsRes;
-  // console.log(postsRes);
-  // posts.value = postsRes.filter((val, i) => {
-  //   console.log(tags[0].id);
-  //   return val.tags.includes(tags[0].id);
-
-  console.log("posts are: ", posts.value);
 });
 </script>
 
