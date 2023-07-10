@@ -10,8 +10,9 @@
           <NuxtLink
             class="flex-none text-xl font-semibold dark:text-white"
             to="/"
-            >ParsVec</NuxtLink
           >
+            <img src="/logo.png" alt="logo" data-not-lazy class="max-h-6" />
+          </NuxtLink>
           <div class="md:hidden">
             <button
               @click="toggleShowC"

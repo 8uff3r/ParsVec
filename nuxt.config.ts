@@ -32,23 +32,9 @@ export default defineNuxtConfig({
           name: "darkreader-lock",
         },
       ],
-    },
-  },
-  image: {
-    domains: [
-      "images.unsplash.com",
-    ],
-    alias: {
-      unsplash: "https://images.unsplash.com",
-    },
-    quality: 80,
-    presets: {
-      homepost: {
-        modifiers: {
-          width: 150,
-          height: 50,
-        },
-      },
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.png" },
+      ],
     },
   },
 
