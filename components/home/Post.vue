@@ -7,10 +7,13 @@
     <img
       class="w-full h-full absolute top-0 left-0 object-cover"
       :src="imageUrl"
-      alt="Image Description"
+      loading="lazy"
+      :onerror="`this.onerror=null;this.src='${defaultPostUrl}'`"
     />
 
-    <div class="group-hover:visible visible lg:invisible absolute top-0 inset-x-0 z-10">
+    <div
+      class="group-hover:visible visible lg:invisible absolute top-0 inset-x-0 z-10"
+    >
       <div class="p-4 flex flex-col h-full sm:p-6">
         <!-- Avatar -->
         <div class="flex items-center">
@@ -63,7 +66,7 @@ watch(
   () => {
     console.log(props.record);
     imageUrl = pb.files.getUrl(props.record, props.record.file!, {
-      thumb: "400x500",
+      thumb: "300x200",
     });
     avatarUrl = pb.files.getUrl(
       props.record.expand.owner,
@@ -73,6 +76,7 @@ watch(
   { immediate: true }
 );
 const defaultAvatarUrl = "";
+const defaultPostUrl = "/gray.jpg";
 </script>
 
 <style scoped></style>

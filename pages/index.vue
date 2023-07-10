@@ -320,7 +320,7 @@
 -->
 
     <section
-      class="overflow-hidden bg-gray-50 sm:grid sm:grid-cols-2 sm:items-center dark:bg-slate-900 bg-inherit "
+      class="overflow-hidden bg-gray-50 sm:grid sm:grid-cols-2 sm:items-center dark:bg-slate-900 bg-inherit"
     >
       <div class="p-8 md:p-12 lg:px-16 lg:py-24">
         <div
@@ -329,14 +329,14 @@
           <h2
             class="text-2xl font-bold text-gray-900 dark:text-gray-100 md:text-3xl"
           >
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit
+            Join our community of photo enthusiasts
           </h2>
 
           <p class="hidden text-gray-500 md:mt-4 md:block">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas
-            tempus tellus etiam sed. Quam a scelerisque amet ullamcorper eu enim
-            et fermentum, augue. Aliquet amet volutpat quisque ut interdum
-            tincidunt duis.
+            Start sharing your favorite moments with the world! Sign up now to
+            discover new inspiration, connect with like-minded individuals, and
+            showcase your creativity. Don't miss out on the fun - create your
+            account today!
           </p>
 
           <div class="mt-4 md:mt-8">
@@ -363,7 +363,13 @@
 import PocketBase from "pocketbase";
 
 const config = useRuntimeConfig() as any;
-const posts = ref();
+const posts =
+  ref();
+  // Array(15).fill({
+  //   file: "",
+  //   id: "",
+  //   expand: { owner: { avatar: "", username: "" } },
+  // })
 const masonaryClass = (index: number) => {
   if (index % 4 === 0) {
     return `aspect-h-9 aspect-w-16`;

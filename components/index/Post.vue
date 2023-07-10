@@ -5,6 +5,8 @@
       class="w-full h-full absolute top-0 left-0 object-cover"
       :src="imageUrl"
       alt="Image Description"
+      loading="lazy"
+      :onerror="`this.onerror=null;this.src='${defaultPostUrl}'`"
     />
 
     <div
@@ -48,7 +50,7 @@ watch(
   () => {
     console.log(props.record);
     imageUrl = pb.files.getUrl(props.record, props.record.file!, {
-      thumb: "400x500",
+      thumb: "300x200",
     });
     avatarUrl = pb.files.getUrl(
       props.record.expand.owner,
@@ -58,6 +60,7 @@ watch(
   { immediate: true }
 );
 const defaultAvatarUrl = "";
+const defaultPostUrl = "/gray.jpg";
 </script>
 
 <style scoped></style>

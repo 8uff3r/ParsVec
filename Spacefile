@@ -5,3 +5,8 @@ micros:
     src: ./
     engine: nuxt
     primary: true
+    presets:
+      env:
+        - name: PB_ENDPOINT
+          description: PocketBase Endpoint
+          default: "https://pb.8uff3r.tech"

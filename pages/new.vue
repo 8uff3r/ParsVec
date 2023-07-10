@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center dark:text-gray-400 justify-center m-8">
-    <form class="flex flex-col" @submit.prevent="submit">
+    <form class="flex flex-col w-full md:w-[80%]" @submit.prevent="submit">
       <input
         type="text"
         name="title"
@@ -15,7 +15,7 @@
         @dragover.prevent
         @drop.prevent="toggleActive"
         :class="{ 'active-dropzone': active }"
-        class="flex-col justify-center dark:text-gray-400 flex text-center h-96 bg-slate-800 w-[70rem] p-32 px-auto mx-auto m-8 rounded-xl"
+        class="flex-col justify-center dark:text-gray-400 flex text-center h-96 bg-slate-800 w-full p-4 lg:p-32 px-auto mx-auto m-8 rounded-xl"
       >
         <div>
           <span>Drag and Drop </span>
@@ -41,31 +41,6 @@
           placeholder="This is a textarea placeholder"
         ></textarea>
       </div>
-      <form @submit.prevent="">
-        <div class="text-white flex mb-4 flex-col justify-center items-center">
-          <div class="pb-2 border border-white rounded-lg w-full">
-            <input
-              class="bg-transparent flex w-full px-4 py-2 mb-2"
-              v-model="newTag"
-              @keyup.enter="addTag(newTag)"
-              placeholder="New Tag"
-            />
-            <div class="flex items-center flex-wrap">
-              <span class="py-2 invisible">:</span>
-              <span
-                v-for="(tag, index) in tags"
-                class="bg-gray-800 px-4 py-2 mr-1 rounded-full"
-                :key="tag"
-              >
-                <button @click="removeTag(index)" class="mx-1" type="button">
-                  x
-                </button>
-                {{ tag }}
-              </span>
-            </div>
-          </div>
-        </div>
-      </form>
       <button
         type="submit"
         class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
@@ -138,18 +113,6 @@ onMounted(async () => {
     }
   };
 });
-// ---------------TagsInput-----------------
-const tags: Ref<string[]> = ref([]);
-const newTag = ref("");
-
-const addTag = (tag: string) => {
-  tags.value.push(tag); // add the new tag to the tags array
-  newTag.value = "";
-};
-
-const removeTag = (index: number) => {
-  tags.value.splice(index, 1);
-};
 </script>
 
 <style scoped></style>

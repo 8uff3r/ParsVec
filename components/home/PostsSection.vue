@@ -20,7 +20,16 @@ import PocketBase from "pocketbase";
 import Post from "./Post.vue";
 
 const config = useRuntimeConfig() as any;
-const posts = ref();
+const posts =
+  ref();
+  // Array(15).fill({
+  //   file: "",
+  //   id: "",
+  //   created: "",
+  //   title: "",
+  //   desc: "",
+  //   expand: { owner: { avatar: "", username: "" } },
+  // })
 onMounted(async () => {
   const pb = new PocketBase(config.public.PB_ENDPOINT);
   posts.value = (
