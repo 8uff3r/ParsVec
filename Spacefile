@@ -5,6 +5,8 @@ micros:
     src: ./
     engine: nuxt
     primary: true
+    public_routes:
+       - "/*"
     presets:
       env:
         - name: PB_ENDPOINT

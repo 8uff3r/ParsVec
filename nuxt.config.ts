@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
     "nuxt-lazy-load",
-    "@nuxt/image",
+    "@vueuse/nuxt",
   ],
   runtimeConfig: {
     public: {
@@ -25,6 +25,7 @@ export default defineNuxtConfig({
   tailwindcss: {
     cssPath: "~/assets/css/input.css",
   },
+
   app: {
     head: {
       meta: [

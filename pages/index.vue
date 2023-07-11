@@ -227,22 +227,20 @@
       Checkout the latest posts from our commiunity
     </h2>
     <div
-      class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-8 sm:px-24"
+      class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:-grid-cols-5 px-0 sm:px-10 gap-4 mx-4 justify-items-center"
     >
       <template v-if="!pending">
-        <div v-for="(post, index) in posts" :key="index" class="">
-          <IndexPost
-            :record="post"
-            class="text-sm flex-shrink-0 relative rounded-xl overflow-hidden w-full min-h-[350px] before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1]"
-          />
-        </div>
+        <template v-for="(post, index) in posts" :key="index" class="">
+          <IndexPost :record="post" class="h-full w-full max-w-[450px]" />
+          <!-- text-sm flex-shrink-0 relative rounded-xl overflow-hidden  before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1] -->
+        </template>
       </template>
       <template v-else>
-        <div v-for="n in 15" :key="n">
+        <template v-for="n in 15" :key="n">
           <LoadingImage
             class="flex-shrink-0 relative rounded-xl overflow-hidden w-full min-h-[350px]"
           />
-        </div>
+        </template>
       </template>
     </div>
 

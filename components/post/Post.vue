@@ -16,32 +16,11 @@
         <div
           class="h-full p-4 sm:px-6 bg-gradient-to-t from-gray-900 absolute bottom-0 w-full to-transparent"
         >
-          <h3
-            class="text-sm sm:text-lg md:text-xl font-semibold text-white absolute bottom-4"
-          >
+          <h3 class="text-sm font-semibold text-white absolute bottom-4">
             {{ props.record.title }}
           </h3>
         </div>
       </div>
-    </div>
-    <div class="py-2 sm:py-2">
-      <!-- Avatar -->
-      <div class="flex items-center">
-        <div class="flex-shrink-0">
-          <img
-            class="max-h-6 border-1 border-white object-cover rounded-full"
-            :src="avatarUrl"
-            alt="avatar"
-            :onerror="`this.onerror=null;this.src='${defaultAvatarUrl}'`"
-          />
-        </div>
-        <div class="ml-1 sm:ml-2">
-          <h4 class="font-semibold dark:text-white text-gray-700 hover:underline">
-            {{ props.record.expand.owner.username }}
-          </h4>
-        </div>
-      </div>
-      <!-- End Avatar -->
     </div>
   </NuxtLink>
   <!-- End Card -->

@@ -205,8 +205,8 @@ onMounted(async () => {
   pb = new PocketBase(config.public.PB_ENDPOINT);
 });
 
-const email = ref("admin@gmail.com");
-const password = ref("a1d2m3i4n5");
+const email = ref();
+const password = ref();
 const router = useRouter();
 
 const submit = async () => {

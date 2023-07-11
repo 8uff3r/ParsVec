@@ -2,7 +2,7 @@
   <div class="mt-5">
     <IndexSearchInput />
   </div>
-  <h1 class="text-[2rem] font-extrabold mx-6 mb-8 text-gray-200">
+  <h1 class="text-[2rem] font-extrabold mx-6 mb-8 dark:text-gray-200 text-gray-700">
     Posts that include "{{ query }}":
   </h1>
   <div

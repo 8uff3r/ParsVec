@@ -1,9 +1,6 @@
 <template>
   <!-- Card -->
-  <NuxtLink
-    class="group relative block transition-all"
-    :to="`/post/${props.record.id}`"
-  >
+  <NuxtLink class="group relative block" :to="`/post/${props.record.id}`">
     <img
       class="w-full h-full absolute top-0 left-0 object-cover"
       :src="imageUrl"
@@ -11,9 +8,8 @@
       :onerror="`this.onerror=null;this.src='${defaultPostUrl}'`"
     />
 
-    <div></div>
     <div
-      class="group-hover:visible visible lg:invisible absolute top-0 inset-x-0 z-10 bg-gradient-to-b from-gray-900 to-transparent"
+      class="group-hover:opacity-100 lg:opacity-0 transition-all duration-200 ease-out absolute top-0 inset-x-0 z-10 bg-gradient-to-b dark:from-gray-900 from-gray-500 to-transparent"
     >
       <div class="p-4 flex flex-col h-full sm:p-6">
         <!-- Avatar -->

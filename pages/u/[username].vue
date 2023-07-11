@@ -1,17 +1,17 @@
 <template>
   <div class="flex relative w-full mx-auto mt-4">
     <section class="pt-1 w-full">
-      <div class="w-full lg:w-8/12 px-4 mx-auto">
+      <div class="w-full lg:w-6/12 px-4 mx-auto">
         <div
           class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-xl rounded-lg mt-16"
         >
-          <div class="px-6 flex flex-col pb-4">
+          <div class="flex flex-col">
             <div class="flex flex-wrap justify-center">
-              <div class="relative w-[100px] px-4 flex justify-center mb-16">
+              <div class="relative w-[100px] justify-center mb-16">
                 <img
                   alt="avatar"
                   :src="avatarUrl"
-                  class="shadow-xl object-cover rounded-full align-middle border-none absolute"
+                  class="shadow-xl object-cover rounded-full align-middle border-none absolute w-[100px] h-[100px]"
                 />
               </div>
             </div>
@@ -27,49 +27,11 @@
                 <i class="text-lg text-gray-400"></i>
                 @{{ user?.username || "" }}
               </div>
-              <div class="mb-2 text-gray-200 dark:text-gray-300 mt-1">
-                <i class="text-lg text-gray-400"></i>
+              <div class="mb-2 text-gray-800 dark:text-gray-300 mt-1">
                 Admin of ParsVec
               </div>
             </div>
 
-            <div class="stats bg-inherit stats-horizontal mx-auto">
-              <div class="stat">
-                <div class="stat-title">Friends</div>
-                <div class="stat-value">31K</div>
-              </div>
-
-              <div class="stat">
-                <div class="stat-title">Photos</div>
-                <div class="stat-value">4,200</div>
-              </div>
-
-              <div class="stat">
-                <div class="stat-title">Comments</div>
-                <div class="stat-value">1,200</div>
-              </div>
-            </div>
-            <!-- <div class="mt-10 py-10 border-t border-blueGray-200 text-center"> -->
-            <!--   <div class="flex flex-wrap justify-center"> -->
-            <!--     <div class="w-full lg:w-9/12 px-4"> -->
-            <!--       <p -->
-            <!--         class="mb-4 text-lg leading-relaxed text-gray-700 dark:text-gray-300" -->
-            <!--       > -->
-            <!--         An artist of considerable range, Jenna the name taken by -->
-            <!--         Melbourne-raised, Brooklyn-based Nick Murphy writes, -->
-            <!--         performs and records all of his own music, giving it a warm, -->
-            <!--         intimate feel with a solid groove structure. An artist of -->
-            <!--         considerable range. -->
-            <!--       </p> -->
-            <!--       <a -->
-            <!--         href="javascript:void(0);" -->
-            <!--         class="font-normal text-pink-500" -->
-            <!--       > -->
-            <!--         Show more -->
-            <!--       </a> -->
-            <!--     </div> -->
-            <!--   </div> -->
-            <!-- </div> -->
           </div>
         </div>
       </div>

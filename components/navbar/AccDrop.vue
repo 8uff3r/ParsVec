@@ -1,37 +1,42 @@
 <template>
   <div class="dropdown md:dropdown-bottom md:dropdown-end transition-all">
-    <label
-      class="btn my-2 border font-medium hover:text-gray-700 text-gray-700 shadow-sm align-middle bg-inherit hover:bg-white hover:dark:bg-gray-800 dark:bg-gray-800 transition-all text-sm dark:border-gray-700 hover:dark:text-gray-400 dark:text-gray-400 flex justify-center items-center"
+    <button
+      class="btn-ghost rounded-full md:my-2 border font-medium hover:text-gray-700 text-gray-700 shadow-sm align-middle bg-inherit hover:bg-white hover:dark:bg-gray-800 dark:bg-gray-800 transition-all text-sm dark:border-gray-700 hover:dark:text-gray-400 dark:text-gray-400 flex justify-center items-center"
       tabindex="0"
+      @click="toggleShowC"
+      v-on-click-outside="close"
     >
-      <span class="">Account </span>
-      <svg
-        class="w-2.5 h-2.5 text-gray-600"
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M2 5L8.16086 10.6869C8.35239 10.8637 8.64761 10.8637 8.83914 10.6869L15 5"
+      <div class="">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-        />
-      </svg>
-    </label>
+          class="w-6 h-6 md:w-8 md:h-8"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+          />
+        </svg>
+      </div>
+    </button>
     <!-- z-50 dropdown-content left-[100%] ease-in-out duration-500 top-0 ml-3 bg-inherit backdrop-blur md:top-auto md:ml-auto md:left-auto transition-[opacity,margin]  min-w-[15rem] shadow-md rounded-lg px-2 dark:bg-gray-800 dark:border dark:border-gray-700 -->
-    <div class="dropdown-content backdrop-blur z-[100] md:w-48 lg:w-64">
+    <div
+      class="absolute top-full right-0 px-2 backdrop-blur z-[100] md:w-48 lg:w-64 transition-all duration-600 ease-in"
+      :class="showC ? 'visible' : 'invisible'"
+    >
       <div class="py-3 px-5 -m-2 bg-gray-200 rounded-t-lg dark:bg-gray-700">
         <p class="text-sm text-gray-500 dark:text-gray-400">Signed in as</p>
         <p class="text-sm font-medium text-gray-800 dark:text-gray-300">
           {{ user.email }}
         </p>
       </div>
-      <div class="mt-2 py-2 first:pt-0 last:pb-0">
+      <div class="mt-2 py-2 first:pt-0 last:pb-1 rounded-xl overflow-clip">
         <a
-          class="flex-row flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+          class="flex-row flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-0 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
           href="#"
         >
           <svg
@@ -48,7 +53,7 @@
           Notifications
         </a>
         <NuxtLink
-          class="flex flex-row items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+          class="flex flex-row items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-0 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
           :to="`/u/${user.username}`"
         >
           <svg
@@ -69,7 +74,7 @@
         </NuxtLink>
         <label tabindex="1">
           <NuxtLink
-            class="flex flex-row items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+            class="flex flex-row items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-0 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
             to="/profile"
           >
             <svg
@@ -91,7 +96,7 @@
         </label>
         <button
           @click="logout"
-          class="flex flex-row items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+          class="flex w-full flex-row items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-800 hover:bg-gray-100 focus:ring-0 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
           to="/profile"
         >
           <svg
@@ -118,6 +123,7 @@
 </template>
 
 <script setup lang="ts">
+import { vOnClickOutside } from "@vueuse/components";
 import PocketBase from "pocketbase";
 import { useAuthStore } from "../../stores/user";
 const store = useAuthStore();
@@ -137,6 +143,14 @@ onMounted(async () => {
     router.push("/");
   };
 });
+
+let showC = ref(false);
+function toggleShowC() {
+  showC.value = !showC.value;
+}
+function close() {
+  showC.value = false;
+}
 </script>
 
 <style scoped></style>
