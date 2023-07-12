@@ -15,23 +15,35 @@
                 />
               </div>
             </div>
-            <div class="text-center mt-12 flex-col flex">
+            <div
+              class="text-center mt-12 flex-col flex justify-center items-center"
+            >
+              <div
+                class="bg-gray-600 h-6 rounded-xl w-24 my-1"
+                v-if="pending"
+              ></div>
               <h3
+                v-else
                 class="text-xl font-semibold leading-normal text-gray-700 dark:text-gray-300"
               >
                 {{ user?.name || "" }}
               </h3>
+
               <div
+                class="bg-gray-600 h-6 rounded-xl w-20 my-1"
+                v-if="pending"
+              ></div>
+              <div
+                v-else
                 class="text-sm leading-normal mt-0 mb-2 text-gray-400 font-bold uppercase"
               >
                 <i class="text-lg text-gray-400"></i>
                 @{{ user?.username || "" }}
               </div>
               <div class="mb-2 text-gray-800 dark:text-gray-300 mt-1">
-                Admin of ParsVec
+                {{ user?.bio }}
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -41,18 +53,18 @@
   <div
     class="flex flex-wrap flex-row flex-1 gap-2 justify-center items-center place-items-center px-0 sm:px-3 xl:px-32"
   >
-    <template v-if="!pending">
-      <div v-for="(post, index) in posts" :key="index">
-        <UserProfilePost
-          :record="post"
+    <template v-if="pending">
+      <div v-for="n in 3" :key="n">
+        <LoadingImage
           class="rounded-xl min-h-[150px] sm:min-h-[250px] w-[100px] sm:w-[200px] overflow-clip"
         />
       </div>
     </template>
     <template v-else>
-      <div v-for="n in 15" :key="n">
-        <LoadingImage
-          class="flex-shrink-0 relative rounded-xl overflow-hidden w-full min-h-[350px]"
+      <div v-for="(post, index) in posts" :key="index">
+        <UserProfilePost
+          :record="post"
+          class="rounded-xl min-h-[150px] sm:min-h-[250px] w-[100px] sm:w-[200px] overflow-clip"
         />
       </div>
     </template>
@@ -85,6 +97,15 @@ const { pending } = useLazyAsyncData(async () => {
   avatarUrl.value = pb.getFileUrl(user.value!, user.value?.avatar, {
     thumb: "200x200",
   });
+  await timeout(5000);
+});
+function timeout(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+onUnmounted(() => {
+  posts.value = undefined;
+  avatarUrl.value = "";
+  user.value = undefined;
 });
 </script>
 

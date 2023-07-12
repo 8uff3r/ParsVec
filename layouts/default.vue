@@ -3,7 +3,7 @@
     <div class="max-w-[90%] mx-auto z-[100] relative">
       <NavBar />
     </div>
-    <div class="min-h-screen">
+    <div class="">
       <slot />
     </div>
     <Footer />

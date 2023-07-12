@@ -4,7 +4,6 @@
     <img
       class="w-full h-full absolute top-0 left-0 object-cover"
       :src="imageUrl"
-      loading="lazy"
       :onerror="`this.onerror=null;this.src='${defaultPostUrl}'`"
     />
 

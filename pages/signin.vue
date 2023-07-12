@@ -226,6 +226,11 @@ const doLogin = async () => {
     alert(error.message);
   }
 };
+
+onUnmounted(() => {
+  email.value = undefined;
+  password.value = undefined;
+});
 </script>
 
 <style scoped></style>

@@ -3,10 +3,9 @@
   <NuxtLink class="block relative w-full" :to="`/post/${props.record.id}`">
     <div class="relative group rounded-xl overflow-clip">
       <img
-        class="object-cover pb-0 inset-0 w-full sm:max-w-none"
+        class="object-cover pb-0 inset-0 w-full sm:max-w-none min-h-[200px]"
         :src="imageUrl"
         alt="Image Description"
-        loading="lazy"
         :onerror="`this.onerror=null;this.src='${defaultPostUrl}'`"
       />
 
@@ -27,16 +26,18 @@
     <div class="py-2 sm:py-2">
       <!-- Avatar -->
       <div class="flex items-center">
-        <div class="flex-shrink-0">
+        <div class="flex-shrink-0 rounded-full overflow-clip">
           <img
-            class="max-h-6 border-1 border-white object-cover rounded-full"
+            class="w-[30px] h-[30px] border-1 border-white object-cover rounded-full"
             :src="avatarUrl"
             alt="avatar"
             :onerror="`this.onerror=null;this.src='${defaultAvatarUrl}'`"
           />
         </div>
         <div class="ml-1 sm:ml-2">
-          <h4 class="font-semibold dark:text-white text-gray-700 hover:underline">
+          <h4
+            class="font-semibold dark:text-white text-gray-700 hover:underline"
+          >
             {{ props.record.expand.owner.username }}
           </h4>
         </div>

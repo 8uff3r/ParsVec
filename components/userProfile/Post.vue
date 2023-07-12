@@ -7,7 +7,6 @@
     <img
       class="w-full h-full absolute top-0 left-0 object-cover"
       :src="imageUrl"
-      loading="lazy"
       :onerror="`this.onerror=null;this.src='${defaultPostUrl}'`"
     />
 
@@ -31,7 +30,7 @@ const config = useRuntimeConfig() as any;
 let pb = new PocketBase(config.public.PB_ENDPOINT);
 const props = defineProps<{ record: any }>();
 
-let imageUrl;
+let imageUrl: string;
 watch(
   () => props.record,
   () => {
@@ -42,6 +41,9 @@ watch(
   { immediate: true }
 );
 const defaultPostUrl = "/gray.jpg";
+onUnmounted(() => {
+  imageUrl = "";
+});
 </script>
 
 <style scoped></style>

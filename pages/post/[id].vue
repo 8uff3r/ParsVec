@@ -21,7 +21,7 @@
             <h1 class="font-medium">{{ user.name + user.lastname }}</h1>
             <div class="items-center flex">
               <div class="text-zinc-400 dark:text-white">
-                <a :href="`/u/${user?.username}`" class="cursor-pointer"
+                <a :href="`/u/${user?.username}`" class="cursor-pointer hover:underline"
                   >u/{{ user?.username }}</a
                 >
               </div>
@@ -33,7 +33,7 @@
         >
           <img
             :src="imageUrl"
-            class="object-contain my-2 rounded-lg overflow-hidden"
+            class="object-contain my-2 rounded-lg overflow-hidden mx-auto"
           />
         </div>
         <div class="flex mb-7 px-4 sm:px-0">
@@ -46,7 +46,7 @@
       <div class="items-center flex gap-4 flex-col text-center">
         <NuxtLink
           :href="`/u/${user.username}`"
-          class="cursor-pointer text-xl font-medium mt-4"
+          class="cursor-pointer text-xl font-medium mt-4 hover:underline"
           >More by {{ user.name + user.lastname }}</NuxtLink
         >
         <div class="w-full">
@@ -97,6 +97,8 @@ const posts = (
 
 const avatarUrl = pb.getFileUrl(user as any, user?.avatar);
 const imageUrl = pb.files.getUrl(post, post.file);
+
+
 </script>
 
 <style scoped></style>

@@ -3,7 +3,7 @@
   <div class="px-4 py-10 sm:px-6 lg:px-32 lg:py-14 mx-auto">
     <!-- Grid -->
     <div
-      class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-8"
+      class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-2"
     >
       <template v-if="!pending">
         <div v-for="(post, index) in posts" :key="index">
@@ -42,10 +42,6 @@ const { pending } = useLazyAsyncData(async () => {
     })
   ).items;
 });
-
-function timeout(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 </script>
 
 <style scoped></style>

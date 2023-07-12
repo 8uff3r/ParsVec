@@ -38,6 +38,11 @@ onMounted(async () => {
 
   posts.value = postsRes;
 });
+
+onUnmounted(() => {
+  tags = undefined;
+  posts.value = undefined;
+});
 </script>
 
 <style scoped></style>

@@ -25,3 +25,6 @@ a {
 a:focus {
   outline:none !important;
 }
+:focus {
+  outline:none !important;
+}

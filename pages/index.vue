@@ -230,15 +230,15 @@
       class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:-grid-cols-5 px-0 sm:px-10 gap-4 mx-4 justify-items-center"
     >
       <template v-if="!pending">
-        <template v-for="(post, index) in posts" :key="index" class="">
+        <div v-for="(post, index) in posts" :key="index" class="">
           <IndexPost :record="post" class="h-full w-full max-w-[450px]" />
           <!-- text-sm flex-shrink-0 relative rounded-xl overflow-hidden  before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1] -->
-        </template>
+        </div>
       </template>
       <template v-else>
         <template v-for="n in 15" :key="n">
           <LoadingImage
-            class="flex-shrink-0 relative rounded-xl overflow-hidden w-full min-h-[350px]"
+            class="relative rounded-xl overflow-hidden aspect-w-4 aspect-h-3 w-full h-full max-w-[450px]"
           />
         </template>
       </template>
@@ -371,11 +371,6 @@ import PocketBase from "pocketbase";
 
 const config = useRuntimeConfig() as any;
 const posts = ref();
-// Array(15).fill({
-//   file: "",
-//   id: "",
-//   expand: { owner: { avatar: "", username: "" } },
-// })
 const masonaryClass = (index: number) => {
   if (index % 4 === 0) {
     return `aspect-h-9 aspect-w-16`;
@@ -391,6 +386,9 @@ const masonaryClass = (index: number) => {
   }
 };
 
+function timeout(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 const { pending } = useLazyAsyncData(async () => {
   const pb = new PocketBase(config.public.PB_ENDPOINT);
   posts.value = (
@@ -399,6 +397,7 @@ const { pending } = useLazyAsyncData(async () => {
       expand: "owner",
     })
   ).items;
+  await timeout(3000)
 });
 </script>
 

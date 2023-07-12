@@ -347,7 +347,8 @@ const config = useRuntimeConfig() as any;
 const file = ref();
 let submit: any = null;
 let uploadFile: any;
-const data = ref({
+
+const initData = {
   name: "",
   email: "",
   lastname: "",
@@ -358,7 +359,8 @@ const data = ref({
   passwordConfirm: "",
   oldPassword: "",
   username: "",
-});
+}
+const data = ref(initData);
 
 let owner: Record | Admin | null;
 let pb = new PocketBase(config.public.PB_ENDPOINT);
@@ -396,6 +398,10 @@ const { pending } = useLazyAsyncData(async () => {
   };
 });
 
+onUnmounted(() => {
+  owner = null
+  data.value = initData
+})
 </script>
 
 <style scoped></style>

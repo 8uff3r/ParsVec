@@ -6,7 +6,6 @@
         class="object-cover pb-0 inset-0 w-full sm:max-w-none"
         :src="imageUrl"
         alt="Image Description"
-        loading="lazy"
         :onerror="`this.onerror=null;this.src='${defaultPostUrl}'`"
       />
 
