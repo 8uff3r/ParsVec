@@ -1,28 +1,22 @@
 <template>
-  <div class="dark:bg-slate-900 z-50">
+  <div class="z-50 dark:bg-slate-900">
     <!-- Hero -->
-    <div class="relative overflow-visible z-50 bg-cover">
+    <div class="relative z-50 overflow-visible bg-cover">
       <div
-        class="absolute bg-[url('/svg/hexa.svg')] dark:bg-[url('/svg/hexa-dark.svg')] h-screen w-screen inset-0 z-[-3] -mt-80 md:-mt-40"
+        class="absolute inset-0 z-[-3] -mt-80 h-screen w-screen bg-[url('/svg/hexa.svg')] dark:bg-[url('/svg/hexa-dark.svg')] md:-mt-40"
       ></div>
-      <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-5">
+      <div class="mx-auto max-w-[85rem] px-4 pb-5 pt-10 sm:px-6 lg:px-8">
         <!-- Announcement Banner -->
         <div class="flex justify-center">
           <NuxtLink
-            class="inline-flex items-center gap-x-2 bg-white border border-gray-200 text-sm text-gray-800 p-1 pl-3 rounded-full transition hover:border-gray-300 dark:bg-gray-800 dark:border-gray-700 dark:hover:border-cyan-700 dark:text-gray-200"
+            class="inline-flex items-center gap-x-2 rounded-full border border-gray-200 bg-white p-1 pl-3 text-sm text-gray-800 transition hover:border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:border-cyan-700"
             to="pricing"
           >
             SignUp for PRO
             <span
-              class="py-2 px-3 inline-flex justify-center items-center gap-x-2 rounded-full bg-gray-200 font-semibold text-sm text-gray-600 dark:bg-gray-700 dark:text-gray-400"
+              class="inline-flex items-center justify-center gap-x-2 rounded-full bg-gray-200 px-3 py-2 text-sm font-semibold text-gray-600 dark:bg-gray-700 dark:text-gray-400"
             >
-              <svg
-                class="w-2.5 h-2.5"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-              >
+              <svg class="h-2.5 w-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path
                   d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
                   stroke="currentColor"
@@ -36,40 +30,34 @@
         <!-- End Announcement Banner -->
 
         <!-- Title -->
-        <div class="mt-5 max-w-2xl text-center mx-auto">
+        <div class="mx-auto mt-5 max-w-2xl text-center">
           <h1
-            class="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-gray-200"
+            class="block text-4xl font-bold text-gray-800 dark:text-gray-200 md:text-5xl lg:text-6xl"
           >
             Let's Design
             <span
-              class="bg-clip-text bg-gradient-to-tl from-blue-600 to-violet-600 text-transparent"
+              class="bg-gradient-to-tl from-blue-600 to-violet-600 bg-clip-text text-transparent"
               >Together</span
             >
           </h1>
         </div>
         <!-- End Title -->
 
-        <div class="mt-5 max-w-3xl text-center mx-auto">
+        <div class="mx-auto mt-5 max-w-3xl text-center">
           <p class="text-lg text-gray-600 dark:text-gray-400">
-            Collaborate and connect with fellow designers from around the world
-            on our platform, where creativity knows no bounds.
+            Collaborate and connect with fellow designers from around the world on our platform,
+            where creativity knows no bounds.
           </p>
         </div>
 
         <!-- Buttons -->
-        <div class="mt-8 grid gap-3 w-full sm:inline-flex sm:justify-center">
+        <div class="mt-8 grid w-full gap-3 sm:inline-flex sm:justify-center">
           <NuxtLink
-            class="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-blue-600 to-violet-600 hover:from-violet-600 hover:to-blue-600 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white py-3 px-4 dark:focus:ring-offset-gray-800"
+            class="inline-flex items-center justify-center gap-x-3 rounded-md border border-transparent bg-gradient-to-tl from-blue-600 to-violet-600 px-4 py-3 text-center text-sm font-medium text-white hover:from-violet-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800"
             to="/signin"
           >
             Get started
-            <svg
-              class="w-3 h-3"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-            >
+            <svg class="h-3 w-3" width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path
                 d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
                 stroke="currentColor"
@@ -81,24 +69,24 @@
         </div>
         <!-- End Buttons -->
 
-        <div class="mt-5 flex justify-center items-center">
+        <div class="mt-5 flex items-center justify-center">
           <IndexSearchInput />
         </div>
       </div>
     </div>
     <!-- End Hero -->
     <!-- Icon Blocks -->
-    <div class="max-w-[85rem] pb-10 px-4 sm:px-6 lg:px-8 lg:pb-14 mx-auto">
-      <div class="max-w-4xl mx-auto">
+    <div class="mx-auto max-w-[85rem] px-4 pb-10 sm:px-6 lg:px-8 lg:pb-14">
+      <div class="mx-auto max-w-4xl">
         <!-- Grid -->
         <div
-          class="grid md:grid-rows-2 lg:gap-6 py-8 px-10 shadow-[0_3px_6px_hsla(0,0%,0%,0.15),0_6px_4px_hsla(0,0%,0%,0.12),0_-1px_4px_hsla(0,0%,0%,0.05)] rounded-xl gap-4"
+          class="grid gap-4 rounded-xl px-10 py-8 shadow-[0_3px_6px_hsla(0,0%,0%,0.15),0_6px_4px_hsla(0,0%,0%,0.12),0_-1px_4px_hsla(0,0%,0%,0.05)] md:grid-rows-2 lg:gap-6"
         >
-          <div class="grid md:grid-cols-2 gap-4 items-baseline">
+          <div class="grid items-baseline gap-4 md:grid-cols-2">
             <!-- Icon Block -->
             <div class="flex">
               <svg
-                class="flex-shrink-0 mt-2 h-8 w-8 text-gray-800 dark:text-white"
+                class="mt-2 h-8 w-8 flex-shrink-0 text-gray-800 dark:text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
@@ -113,15 +101,12 @@
                 />
               </svg>
               <div class="ml-5 sm:ml-8">
-                <h3
-                  class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"
-                >
+                <h3 class="text-base font-semibold text-gray-800 dark:text-gray-200 sm:text-lg">
                   Creative minds
                 </h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  Unleash your creativity and connect with like-minded
-                  individuals on platform designed exclusively for the world's
-                  most innovative and imaginative minds.
+                  Unleash your creativity and connect with like-minded individuals on platform
+                  designed exclusively for the world's most innovative and imaginative minds.
                 </p>
               </div>
             </div>
@@ -130,7 +115,7 @@
             <!-- Icon Block -->
             <div class="flex">
               <svg
-                class="flex-shrink-0 mt-2 h-8 w-8 text-gray-800 dark:text-white"
+                class="mt-2 h-8 w-8 flex-shrink-0 text-gray-800 dark:text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
@@ -142,15 +127,12 @@
                 />
               </svg>
               <div class="ml-5 sm:ml-8">
-                <h3
-                  class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"
-                >
+                <h3 class="text-base font-semibold text-gray-800 dark:text-gray-200 sm:text-lg">
                   Strong empathy
                 </h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  Experience the power of design through the lens of empathy,
-                  with our platform built to connect and inspire designers
-                  worldwide.
+                  Experience the power of design through the lens of empathy, with our platform
+                  built to connect and inspire designers worldwide.
                 </p>
               </div>
             </div>
@@ -158,11 +140,11 @@
           </div>
           <!-- End Col -->
 
-          <div class="justify-between grid items-baseline gap-4 md:grid-cols-2">
+          <div class="grid items-baseline justify-between gap-4 md:grid-cols-2">
             <!-- Icon Block -->
             <div class="flex">
               <svg
-                class="flex-shrink-0 mt-2 h-8 w-8 text-gray-800 dark:text-white"
+                class="mt-2 h-8 w-8 flex-shrink-0 text-gray-800 dark:text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
@@ -174,14 +156,12 @@
                 />
               </svg>
               <div class="ml-5 sm:ml-8">
-                <h3
-                  class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"
-                >
+                <h3 class="text-base font-semibold text-gray-800 dark:text-gray-200 sm:text-lg">
                   Simple and affordable
                 </h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  User-friendly and budget-friendly, designed to simplify the
-                  process of showcasing your design work to a global audience.
+                  User-friendly and budget-friendly, designed to simplify the process of showcasing
+                  your design work to a global audience.
                 </p>
               </div>
             </div>
@@ -190,7 +170,7 @@
             <!-- Icon Block -->
             <div class="flex">
               <svg
-                class="flex-shrink-0 mt-2 h-8 w-8 text-gray-800 dark:text-white"
+                class="mt-2 h-8 w-8 flex-shrink-0 text-gray-800 dark:text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
@@ -202,14 +182,12 @@
                 />
               </svg>
               <div class="ml-5 sm:ml-8">
-                <h3
-                  class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200"
-                >
+                <h3 class="text-base font-semibold text-gray-800 dark:text-gray-200 sm:text-lg">
                   Conquer the best
                 </h3>
                 <p class="mt-1 text-gray-600 dark:text-gray-400">
-                  Join our community of top designers and showcase your best
-                  work to conquer the design world.
+                  Join our community of top designers and showcase your best work to conquer the
+                  design world.
                 </p>
               </div>
             </div>
@@ -221,15 +199,13 @@
       </div>
     </div>
 
-    <h2
-      class="text-center block font-bold text-[2rem] text-gray-600 dark:text-white pb-8"
-    >
+    <h2 class="block pb-8 text-center text-[2rem] font-bold text-gray-600 dark:text-white">
       Checkout the latest posts from our commiunity
     </h2>
     <div
-      class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:-grid-cols-5 px-0 sm:px-10 gap-4 mx-4 justify-items-center"
+      class="xl:-grid-cols-5 mx-4 grid justify-items-center gap-4 px-0 sm:grid-cols-2 sm:px-10 md:grid-cols-3 lg:grid-cols-4"
     >
-      <template v-if="!pending">
+      <template v-if="!data">
         <div v-for="(post, index) in posts" :key="index" class="">
           <IndexPost :record="post" class="h-full w-full max-w-[450px]" />
           <!-- text-sm flex-shrink-0 relative rounded-xl overflow-hidden  before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1] -->
@@ -238,17 +214,14 @@
       <template v-else>
         <template v-for="n in 15" :key="n">
           <LoadingImage
-            class="relative rounded-xl overflow-hidden aspect-w-4 aspect-h-3 w-full h-full max-w-[450px]"
+            class="aspect-h-3 aspect-w-4 relative h-full w-full max-w-[450px] overflow-hidden rounded-xl"
           />
         </template>
       </template>
     </div>
 
-    <div class="flex justify-center w-full">
-      <NuxtLink
-        class="text-blue-100 m-8 py-3 px-6 rounded-xl bg-blue-600 w-fit"
-        to="/latest"
-      >
+    <div class="flex w-full justify-center">
+      <NuxtLink class="m-8 w-fit rounded-xl bg-blue-600 px-6 py-3 text-blue-100" to="/latest">
         View more
 
         <svg
@@ -257,7 +230,7 @@
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="w-6 h-6 inline"
+          class="inline h-6 w-6"
         >
           <path
             stroke-linecap="round"
@@ -271,9 +244,7 @@
     <section class="bg-slate-100 dark:bg-slate-900">
       <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
         <div class="mx-auto max-w-3xl text-center">
-          <h2
-            class="text-3xl font-bold text-gray-900 dark:text-gray-100 sm:text-4xl"
-          >
+          <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 sm:text-4xl">
             Trusted by designers around the globe
           </h2>
         </div>
@@ -281,39 +252,27 @@
         <div class="mt-8 sm:mt-12">
           <dl class="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div
-              class="flex flex-col rounded-lg bg-blue-100 dark:bg-slate-800 px-4 py-8 text-center"
+              class="flex flex-col rounded-lg bg-blue-100 px-4 py-8 text-center dark:bg-slate-800"
             >
-              <dt class="order-last text-lg font-medium text-gray-500">
-                Total Sales
-              </dt>
+              <dt class="order-last text-lg font-medium text-gray-500">Total Sales</dt>
 
-              <dd class="text-4xl font-extrabold text-blue-600 md:text-5xl">
-                $4.8m
-              </dd>
+              <dd class="text-4xl font-extrabold text-blue-600 md:text-5xl">$4.8m</dd>
             </div>
 
             <div
-              class="flex flex-col rounded-lg bg-blue-100 dark:bg-slate-800 px-4 py-8 text-center"
+              class="flex flex-col rounded-lg bg-blue-100 px-4 py-8 text-center dark:bg-slate-800"
             >
-              <dt class="order-last text-lg font-medium text-gray-500">
-                Official Addons
-              </dt>
+              <dt class="order-last text-lg font-medium text-gray-500">Official Addons</dt>
 
-              <dd class="text-4xl font-extrabold text-blue-600 md:text-5xl">
-                24
-              </dd>
+              <dd class="text-4xl font-extrabold text-blue-600 md:text-5xl">24</dd>
             </div>
 
             <div
-              class="flex flex-col rounded-lg bg-blue-100 px-4 py-8 dark:bg-slate-800 text-center"
+              class="flex flex-col rounded-lg bg-blue-100 px-4 py-8 text-center dark:bg-slate-800"
             >
-              <dt class="order-last text-lg font-medium text-gray-500">
-                Total Addons
-              </dt>
+              <dt class="order-last text-lg font-medium text-gray-500">Total Addons</dt>
 
-              <dd class="text-4xl font-extrabold text-blue-600 md:text-5xl">
-                86
-              </dd>
+              <dd class="text-4xl font-extrabold text-blue-600 md:text-5xl">86</dd>
             </div>
           </dl>
         </div>
@@ -327,23 +286,18 @@
 -->
 
     <section
-      class="overflow-hidden bg-gray-50 sm:grid sm:grid-cols-2 sm:items-center dark:bg-slate-900 bg-inherit"
+      class="overflow-hidden bg-gray-50 bg-inherit dark:bg-slate-900 sm:grid sm:grid-cols-2 sm:items-center"
     >
       <div class="p-8 md:p-12 lg:px-16 lg:py-24">
-        <div
-          class="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right"
-        >
-          <h2
-            class="text-2xl font-bold text-gray-900 dark:text-gray-100 md:text-3xl"
-          >
+        <div class="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 md:text-3xl">
             Join our community of photo enthusiasts
           </h2>
 
           <p class="hidden text-gray-500 md:mt-4 md:block">
-            Start sharing your favorite moments with the world! Sign up now to
-            discover new inspiration, connect with like-minded individuals, and
-            showcase your creativity. Don't miss out on the fun - create your
-            account today!
+            Start sharing your favorite moments with the world! Sign up now to discover new
+            inspiration, connect with like-minded individuals, and showcase your creativity. Don't
+            miss out on the fun - create your account today!
           </p>
 
           <div class="mt-4 md:mt-8">
@@ -367,7 +321,7 @@
 </template>
 
 <script setup lang="ts">
-import PocketBase from "pocketbase";
+import PocketBase from 'pocketbase';
 
 const config = useRuntimeConfig() as any;
 const posts = ref();
@@ -389,16 +343,23 @@ const masonaryClass = (index: number) => {
 function timeout(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-const { pending } = useLazyAsyncData(async () => {
-  const pb = new PocketBase(config.public.PB_ENDPOINT);
-  posts.value = (
-    await pb.collection("posts").getList(1, 15, {
-      sort: "-created",
-      expand: "owner",
-    })
-  ).items;
-  await timeout(3000)
-});
+const { pending, data } = useAsyncData(
+  'postGet',
+  async () => {
+    const pb = new PocketBase(config.public.PB_ENDPOINT);
+    console.log('startedAWAITNG');
+    posts.value = (
+      await pb.collection('posts').getList(1, 15, {
+        sort: '-created',
+        expand: 'owner'
+      })
+    ).items;
+    await timeout(3000);
+    console.log('returned');
+    return false;
+  },
+  { lazy: true, default: () => true, server: false }
+);
 </script>
 
 <style scoped></style>

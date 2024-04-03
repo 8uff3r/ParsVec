@@ -1,9 +1,9 @@
 <template>
-  <div class="dropdown w-full relative">
-    <label class="cursor-pointer inline" tabindex="0"
+  <div class="dropdown relative w-full">
+    <label class="inline cursor-pointer" tabindex="0"
       >Photos
       <svg
-        class="ml-2 w-2.5 h-2.5 text-gray-600 inline"
+        class="ml-2 inline h-2.5 w-2.5 text-gray-600"
         width="16"
         height="16"
         viewBox="0 0 16 16"
@@ -19,16 +19,14 @@
       </svg>
     </label>
     <div
-      class="dropdown-menu dropdown-menu-bottom-right dark:bg-gray-800 lg:w-[40rem] xl:w-[70rem] mt-1 absolute"
+      class="dropdown-menu dropdown-menu-bottom-right absolute mt-1 dark:bg-gray-800 lg:w-[40rem] xl:w-[70rem]"
     >
-      <div
-        class="grid grid-cols-1 space-y-6 gap-x-4 gap-y-0 lg:grid-cols-3 w-full"
-      >
+      <div class="grid w-full grid-cols-1 gap-x-4 gap-y-0 space-y-6 lg:grid-cols-3">
         <NuxtLink
           :to="`/tags/${tag.name}`"
           v-for="(tag, index) in tags"
           :key="index"
-          class="dropdown-item w-full text-sm dark:hover:bg-slate-700 h-full"
+          class="dropdown-item h-full w-full text-sm dark:hover:bg-slate-700"
           style="margin-top: 0 !important"
         >
           {{ tag.name }}
@@ -39,13 +37,13 @@
 </template>
 
 <script setup lang="ts">
-import PocketBase from "pocketbase";
+import PocketBase from 'pocketbase';
 
 const config = useRuntimeConfig() as any;
 const tags = ref();
 onMounted(async () => {
   const pb = new PocketBase(config.public.PB_ENDPOINT);
-  tags.value = (await pb.collection("tags").getList(1, 15)).items;
+  tags.value = (await pb.collection('tags').getList(1, 15)).items;
 });
 </script>
 

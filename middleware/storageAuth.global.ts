@@ -1,5 +1,5 @@
-import PocketBase from "pocketbase";
-export default defineNuxtRouteMiddleware(to => {
+import PocketBase from 'pocketbase';
+export default defineNuxtRouteMiddleware((to) => {
   // skip middleware on server
   if (process.server) return;
 
@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware(to => {
   let pb = new PocketBase(config.public.PB_ENDPOINT);
   const owner = pb.authStore.model;
   if (!owner) {
-    navigateTo("/signin");
+    navigateTo('/signin');
     return;
   }
 });

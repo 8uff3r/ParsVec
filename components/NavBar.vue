@@ -1,87 +1,51 @@
 <template>
   <div class="z-40">
-    <header
-      class="flex flex-wrap md:justify-start md:flex-nowrap z-40 w-full text-sm"
-    >
+    <header class="z-40 flex w-full flex-wrap text-sm md:flex-nowrap md:justify-start">
       <nav
-        class="mt-6 relative max-w-[90rem] w-full bg-white border border-gray-200 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-gray-800 dark:border-gray-700"
+        class="relative mx-2 mt-6 w-full max-w-[90rem] rounded-[36px] border border-gray-200 bg-white px-4 py-3 dark:border-gray-700 dark:bg-gray-800 md:flex md:items-center md:justify-between md:px-6 md:py-0 lg:px-8 xl:mx-auto"
       >
-        <div class="flex items-center justify-center relative">
+        <div class="relative flex items-center justify-center">
           <div class="md:hidden" v-on-click-outside="close">
             <button
               @click="toggleShowC"
               type="button"
-              class="p-2 absolute left-0 inset-y-0 inline-flex justify-center items-center gap-2 rounded-full border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none transition-all text-sm dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+              class="absolute inset-y-0 left-0 inline-flex items-center justify-center gap-2 rounded-full border bg-white p-2 align-middle text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none dark:border-gray-700 dark:bg-slate-900 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-white dark:focus:ring-offset-gray-800"
             >
-              <svg
-                class="w-4 h-4"
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-                />
-              </svg>
-              <svg
-                class="hidden w-4 h-4"
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-                />
-              </svg>
+              <IconMenu2 :size="14" />
             </button>
           </div>
-          <NuxtLink
-            class="flex-none text-xl font-semibold dark:text-white"
-            to="/"
-          >
-            <img src="/logo.png" alt="logo" data-not-lazy class="max-h-6 hidden dark:block" />
+          <NuxtLink class="flex-none text-xl font-semibold dark:text-white" to="/">
+            <img src="/logo.png" alt="logo" data-not-lazy class="hidden max-h-6 dark:block" />
             <img src="/logo-dark.png" alt="logo" data-not-lazy class="max-h-6 dark:hidden" />
           </NuxtLink>
 
-          <NavbarAccDrop
-            class="md:hidden absolute right-0 bottom-0 inline-flex justify-center"
-          />
+          <NavbarAccDrop class="absolute bottom-0 right-0 inline-flex justify-center md:hidden" />
         </div>
-        <div
-          class="basis-full grow md:block mx-auto"
-          :class="showC ? 'block' : 'hidden'"
-        >
+        <div class="mx-auto grow basis-full md:block" :class="showC ? 'block' : 'hidden'">
           <div
-            class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row items-center md:items-center md:justify-end md:gap-y-0 md:gap-x-7 md:mt-0 md:pl-7"
+            class="mt-5 flex flex-col items-center gap-x-0 gap-y-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-x-7 md:gap-y-0 md:pl-7"
           >
-            
-            <label class="swap swap-rotate hidden  md:inline-grid">
-  
-  <!-- this hidden checkbox controls the state -->
-  <input type="checkbox" class="hidden" />
-  
-  <!-- sun icon -->
-  <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
-  
-  <!-- moon icon -->
-  <svg class="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"/></svg>
-  
-</label>
-            <NuxtLink
-              class="font-medium text-blue-600 md:py-6 dark:text-blue-500"
-              to="/latest"
+            <UseDark v-slot="{ isDark, toggleDark }">
+              <label class="swap swap-rotate hidden md:inline-grid" @change="toggleDark()">
+                <!-- this hidden checkbox controls the state -->
+                <input type="checkbox" class="hidden" />
+                <!-- moon icon -->
+                <IconMoon class="swap-off h-6 w-6" />
+
+                <!-- sun icon -->
+                <IconSun class="swap-on h-6 w-6 text-white" />
+              </label>
+            </UseDark>
+            <NuxtLink class="font-medium text-blue-600 dark:text-blue-500 md:py-6" to="/latest"
               >Latest</NuxtLink
             >
             <template v-if="!store.isAuthed">
               <NuxtLink
-                class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-l md:border-gray-300 md:my-6 md:pl-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500"
+                class="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500 md:my-6 md:border-l md:border-gray-300 md:pl-6"
                 to="/signin"
               >
                 <svg
-                  class="w-4 h-4"
+                  class="h-4 w-4"
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
@@ -97,15 +61,14 @@
             </template>
             <template v-else>
               <NuxtLink
-                class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800 cursor-pointer w-full md:w-fit"
+                class="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-md border border-transparent bg-blue-500 px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 md:w-fit"
                 to="/new"
               >
                 Share Work
               </NuxtLink>
 
-              <NavbarAccDrop
-                class="right-0 bottom-0  justify-center hidden md:block"
-              />
+              <NavbarAccDrop class="bottom-0 right-0 hidden justify-center md:block" />
+              <AuthSignIn />
             </template>
           </div>
         </div>
@@ -119,8 +82,9 @@
 </template>
 
 <script setup lang="ts">
-import { vOnClickOutside } from "@vueuse/components";
-import { useAuthStore } from "../stores/user";
+import { IconMoon, IconSun, IconMenu2 } from '@tabler/icons-vue';
+import { vOnClickOutside, UseDark } from '@vueuse/components';
+import { useAuthStore } from '../stores/user';
 const store = useAuthStore();
 let showC = ref(false);
 function toggleShowC() {

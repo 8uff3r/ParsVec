@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    <NuxtLayout>
- <NuxtLoadingIndicator />
+    <NuxtLayout class="min-h-[100svh]">
+      <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
   </div>
 </template>
-<script setup lang="ts"></script>
 <style>
 body {
   min-height: 100vh;

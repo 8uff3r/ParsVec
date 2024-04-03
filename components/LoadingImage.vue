@@ -1,3 +1,3 @@
 <template>
-  <div class="w-[300px] h-[200px] bg-gray-600 animate-pulse"></div>
+  <div class="skeleton h-[200px] w-[300px]"></div>
 </template>

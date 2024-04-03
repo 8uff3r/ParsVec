@@ -1,21 +1,21 @@
 <template>
   <!-- Card -->
-  <NuxtLink class="block relative w-full" :to="`/post/${props.record.id}`">
-    <div class="relative group rounded-xl overflow-clip">
+  <NuxtLink class="relative block w-full" :to="`/post/${props.record.id}`">
+    <div class="group relative overflow-clip rounded-xl">
       <img
-        class="object-cover pb-0 inset-0 w-full sm:max-w-none"
+        class="inset-0 w-full object-cover pb-0 sm:max-w-none"
         :src="imageUrl"
         alt="Image Description"
         :onerror="`this.onerror=null;this.src='${defaultPostUrl}'`"
       />
 
       <div
-        class="group-hover:opacity-100 lg:opacity-0 absolute bottom-0 inset-x-0 h-1/2 z-30 transition-all ease-out duration-300"
+        class="absolute inset-x-0 bottom-0 z-30 h-1/2 transition-all duration-300 ease-out group-hover:opacity-100 lg:opacity-0"
       >
         <div
-          class="h-full p-4 sm:px-6 bg-gradient-to-t from-gray-900 absolute bottom-0 w-full to-transparent"
+          class="absolute bottom-0 h-full w-full bg-gradient-to-t from-gray-900 to-transparent p-4 sm:px-6"
         >
-          <h3 class="text-sm font-semibold text-white absolute bottom-4">
+          <h3 class="absolute bottom-4 text-sm font-semibold text-white">
             {{ props.record.title }}
           </h3>
         </div>
@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import PocketBase from "pocketbase";
+import PocketBase from 'pocketbase';
 
 const config = useRuntimeConfig() as any;
 let pb = new PocketBase(config.public.PB_ENDPOINT);
@@ -38,18 +38,16 @@ watch(
   () => props.record,
   () => {
     imageUrl = pb.files.getUrl(props.record, props.record.file!, {
-      thumb: "400x300",
+      thumb: '400x300'
     });
-    avatarUrl = pb.files.getUrl(
-      props.record.expand.owner,
-      props.record.expand.owner.avatar,
-      { thumb: "50x50" }
-    );
+    avatarUrl = pb.files.getUrl(props.record.expand.owner, props.record.expand.owner.avatar, {
+      thumb: '50x50'
+    });
   },
   { immediate: true }
 );
-const defaultAvatarUrl = "";
-const defaultPostUrl = "/gray.jpg";
+const defaultAvatarUrl = '';
+const defaultPostUrl = '/gray.jpg';
 </script>
 
 <style scoped></style>

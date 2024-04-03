@@ -1,8 +1,8 @@
 <template>
-  <div class="px-4 py-10 sm:px-6 lg:px-32 lg:py-14 mx-auto">
-    <div class="grid lg:grid-cols-3 gap-8 [&>div]:rounded-xl">
+  <div class="mx-auto px-4 py-10 sm:px-6 lg:px-32 lg:py-14">
+    <div class="grid gap-8 lg:grid-cols-3 [&>div]:rounded-xl">
       <div
-        class="relative block w-full h-[350px] bg-gray-600 animate-pulse"
+        class="relative block h-[350px] w-full animate-pulse bg-gray-600"
         v-for="i in blocks"
         :key="i"
       ></div>

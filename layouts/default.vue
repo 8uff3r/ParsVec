@@ -1,15 +1,11 @@
 <template>
-  <div class="dark:bg-slate-900 bg-white overflow-clip relative">
-    <div class="max-w-[90%] mx-auto z-[100] relative">
+  <div
+    class="relative flex h-full w-full flex-col items-stretch justify-between overflow-clip bg-white dark:bg-slate-900"
+  >
+    <div class="relative z-[100] mx-auto flex h-full w-full flex-col">
       <NavBar />
     </div>
-    <div class="">
-      <slot />
-    </div>
+    <slot />
     <Footer />
   </div>
 </template>
-
-<script setup lang="ts"></script>
-
-<style scoped></style>

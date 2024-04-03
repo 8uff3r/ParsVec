@@ -1,29 +1,18 @@
 <template>
   <div id="end-footer" class="mt-9">
-    <footer
-      class="w-full max-w-[85rem] py-10 px-4 sm:px-6 lg:px-8 mx-auto text-gray-200"
-    >
+    <footer class="mx-auto w-full max-w-[85rem] px-4 py-10 text-gray-200 sm:px-6 lg:px-8">
       <!-- Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-10">
+      <div class="mb-10 grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
         <div class="col-span-full hidden lg:col-span-1 lg:block">
-          <a
-            class="flex-none text-xl font-semibold dark:text-white"
-            href="#"
-            aria-label="Brand"
+          <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Brand"
             >ParsVec</a
           >
-          <p class="mt-3 text-xs sm:text-sm text-gray-200 dark:text-gray-400">
-            © 2023 ParsVec.
-          </p>
+          <p class="mt-3 text-xs text-gray-200 dark:text-gray-400 sm:text-sm">© 2023 ParsVec.</p>
         </div>
         <!-- End Col -->
 
         <div>
-          <h4
-            class="text-xs font-semibold text-gray-500 uppercase dark:text-gray-100"
-          >
-            Product
-          </h4>
+          <h4 class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-100">Product</h4>
 
           <div class="mt-3 grid space-y-3 text-sm">
             <p>
@@ -59,11 +48,7 @@
         <!-- End Col -->
 
         <div>
-          <h4
-            class="text-xs font-semibold text-gray-500 uppercase dark:text-gray-100"
-          >
-            Company
-          </h4>
+          <h4 class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-100">Company</h4>
 
           <div class="mt-3 grid space-y-3 text-sm">
             <p>
@@ -86,9 +71,7 @@
                 href="#"
                 >Careers</a
               >
-              <span class="inline text-blue-600 dark:text-blue-500"
-                >— We're hiring</span
-              >
+              <span class="inline text-blue-600 dark:text-blue-500">— We're hiring</span>
             </p>
             <p>
               <a
@@ -116,9 +99,7 @@
         <!-- End Col -->
 
         <div>
-          <h4
-            class="text-xs font-semibold text-gray-500 uppercase dark:text-gray-100"
-          >
+          <h4 class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-100">
             Resources
           </h4>
 
@@ -163,9 +144,7 @@
         <!-- End Col -->
 
         <div>
-          <h4
-            class="text-xs font-semibold text-gray-500 uppercase dark:text-gray-100"
-          >
+          <h4 class="text-xs font-semibold uppercase text-gray-500 dark:text-gray-100">
             Developers
           </h4>
 
@@ -194,9 +173,7 @@
             </p>
           </div>
 
-          <h4
-            class="mt-7 text-xs font-semibold text-gray-500 uppercase dark:text-gray-100"
-          >
+          <h4 class="mt-7 text-xs font-semibold uppercase text-gray-500 dark:text-gray-100">
             Industries
           </h4>
 
@@ -221,11 +198,10 @@
       </div>
       <!-- End Grid -->
 
-      <div class="pt-5 mt-5 border-t border-gray-200 dark:border-gray-700">
-        <div class="sm:flex sm:justify-between sm:items-center">
+      <div class="mt-5 border-t border-gray-200 pt-5 dark:border-gray-700">
+        <div class="sm:flex sm:items-center sm:justify-between">
           <div class="flex items-center gap-x-3">
-
-            <div class="space-x-4 text-sm ml-4">
+            <div class="ml-4 space-x-4 text-sm">
               <a
                 class="inline-flex gap-x-2 text-gray-200 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
                 href="#"
@@ -244,17 +220,12 @@
             </div>
           </div>
 
-          <div class="flex justify-between items-center">
+          <div class="flex items-center justify-between">
             <div class="mt-3 sm:hidden">
-              <a
-                class="flex-none text-xl font-semibold dark:text-white"
-                href="#"
-                aria-label="Brand"
+              <a class="flex-none text-xl font-semibold dark:text-white" href="#" aria-label="Brand"
                 >ParsVec</a
               >
-              <p
-                class="mt-1 text-xs sm:text-sm text-gray-200 dark:text-gray-400"
-              >
+              <p class="mt-1 text-xs text-gray-200 dark:text-gray-400 sm:text-sm">
                 © 2022 ParsVec Inc.
               </p>
             </div>
@@ -266,7 +237,7 @@
                 href="#"
               >
                 <svg
-                  class="w-4 h-4"
+                  class="h-4 w-4"
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
@@ -283,7 +254,7 @@
                 href="#"
               >
                 <svg
-                  class="w-4 h-4"
+                  class="h-4 w-4"
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
@@ -300,7 +271,7 @@
                 href="#"
               >
                 <svg
-                  class="w-4 h-4"
+                  class="h-4 w-4"
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"

@@ -1,12 +1,10 @@
 <template>
   <div class="min-h-screen">
-    <div
-      class="pt-5 dark:border-b-gray-700 border-b-gray-100 border-b-2 mx-auto w-[88%]"
-    >
+    <div class="mx-auto w-[88%] border-b-2 border-b-gray-100 pt-5 dark:border-b-gray-700">
       <IndexSearchInput />
     </div>
     <!----------------- Posts and Loading ----------------->
-    <h1 class="text-[35px] mx-6 mt-1 -mb-8 text-gray-400">
+    <h1 class="mx-6 -mb-8 mt-1 text-[35px] text-gray-400">
       {{ mainHead }}
     </h1>
     <ClientOnly>
@@ -23,9 +21,9 @@
 </template>
 
 <script setup lang="ts">
-import PostsLoading from "@/components/home/PostsLoading.vue";
+import PostsLoading from '@/components/home/PostsLoading.vue';
 
-const mainHead = ref("Latest Posts");
+const mainHead = ref('Latest Posts');
 </script>
 
 <style scoped></style>

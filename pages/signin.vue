@@ -1,21 +1,17 @@
 <template>
   <div>
-    <div class="dark:bg-slate-900 bg-gray-100 flex h-full items-center py-16">
-      <main class="w-full max-w-md mx-auto p-6">
+    <div class="flex h-full items-center bg-gray-100 py-16 dark:bg-slate-900">
+      <main class="mx-auto w-full max-w-md p-6">
         <div
-          class="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700"
+          class="mt-7 rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800"
         >
           <div class="p-4 sm:p-7">
             <div class="text-center">
-              <h1
-                class="block text-2xl font-bold text-gray-800 dark:text-white"
-              >
-                Sign in
-              </h1>
+              <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Sign in</h1>
               <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
                 Don't have an account yet?
                 <NuxtLink
-                  class="text-blue-600 decoration-2 hover:underline font-medium"
+                  class="font-medium text-blue-600 decoration-2 hover:underline"
                   to="/signup"
                 >
                   Sign up here
@@ -26,15 +22,9 @@
             <div class="mt-5">
               <button
                 type="button"
-                class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+                class="inline-flex w-full items-center justify-center gap-2 rounded-md border bg-white px-4 py-3 align-middle text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-white dark:focus:ring-offset-gray-800"
               >
-                <svg
-                  class="w-4 h-auto"
-                  width="46"
-                  height="47"
-                  viewBox="0 0 46 47"
-                  fill="none"
-                >
+                <svg class="h-auto w-4" width="46" height="47" viewBox="0 0 46 47" fill="none">
                   <path
                     d="M46 24.0287C46 22.09 45.8533 20.68 45.5013 19.2112H23.4694V27.9356H36.4069C36.1429 30.1094 34.7347 33.37 31.5957 35.5731L31.5663 35.8669L38.5191 41.2719L38.9885 41.3306C43.4477 37.2181 46 31.1669 46 24.0287Z"
                     fill="#4285F4"
@@ -56,7 +46,7 @@
               </button>
 
               <div
-                class="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:mr-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ml-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600"
+                class="flex items-center py-3 text-xs uppercase text-gray-400 before:mr-6 before:flex-[1_1_0%] before:border-t before:border-gray-200 after:ml-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600"
               >
                 Or
               </div>
@@ -66,9 +56,7 @@
                 <div class="grid gap-y-4">
                   <!-- Form Group -->
                   <div>
-                    <label
-                      for="email"
-                      class="block text-sm mb-2 dark:text-white"
+                    <label for="email" class="mb-2 block text-sm dark:text-white"
                       >Email address</label
                     >
                     <div class="relative">
@@ -77,12 +65,12 @@
                         id="email"
                         v-model="email"
                         name="email"
-                        class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                        class="block w-full rounded-md border-gray-200 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
                         required
                         aria-describedby="email-error"
                       />
                       <div
-                        class="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3"
+                        class="pointer-events-none absolute inset-y-0 right-0 flex hidden items-center pr-3"
                       >
                         <svg
                           class="h-5 w-5 text-red-500"
@@ -98,26 +86,20 @@
                         </svg>
                       </div>
                     </div>
-                    <p
-                      class="hidden text-xs text-red-600 mt-2"
-                      id="email-error"
-                    >
-                      Please include a valid email address so we can get back to
-                      you
+                    <p class="mt-2 hidden text-xs text-red-600" id="email-error">
+                      Please include a valid email address so we can get back to you
                     </p>
                   </div>
                   <!-- End Form Group -->
 
                   <!-- Form Group -->
                   <div>
-                    <div class="flex justify-between items-center">
-                      <label
-                        for="password"
-                        class="block text-sm mb-2 dark:text-white"
+                    <div class="flex items-center justify-between">
+                      <label for="password" class="mb-2 block text-sm dark:text-white"
                         >Password</label
                       >
                       <a
-                        class="text-sm text-blue-600 decoration-2 hover:underline font-medium"
+                        class="text-sm font-medium text-blue-600 decoration-2 hover:underline"
                         href="../examples/html/recover-account.html"
                         >Forgot password?</a
                       >
@@ -128,12 +110,12 @@
                         id="password"
                         v-model="password"
                         name="password"
-                        class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                        class="block w-full rounded-md border-gray-200 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
                         required
                         aria-describedby="password-error"
                       />
                       <div
-                        class="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3"
+                        class="pointer-events-none absolute inset-y-0 right-0 flex hidden items-center pr-3"
                       >
                         <svg
                           class="h-5 w-5 text-red-500"
@@ -149,10 +131,7 @@
                         </svg>
                       </div>
                     </div>
-                    <p
-                      class="hidden text-xs text-red-600 mt-2"
-                      id="password-error"
-                    >
+                    <p class="mt-2 hidden text-xs text-red-600" id="password-error">
                       8+ characters required
                     </p>
                   </div>
@@ -165,20 +144,18 @@
                         id="remember-me"
                         name="remember-me"
                         type="checkbox"
-                        class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                        class="pointer-events-none mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:checked:border-blue-500 dark:checked:bg-blue-500 dark:focus:ring-offset-gray-800"
                       />
                     </div>
                     <div class="ml-3">
-                      <label for="remember-me" class="text-sm dark:text-white"
-                        >Remember me</label
-                      >
+                      <label for="remember-me" class="text-sm dark:text-white">Remember me</label>
                     </div>
                   </div>
                   <!-- End Checkbox -->
 
                   <button
                     type="submit"
-                    class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+                    class="inline-flex items-center justify-center gap-2 rounded-md border border-transparent bg-blue-500 px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
                   >
                     Sign in
                   </button>
@@ -194,8 +171,8 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthStore } from "../stores/user";
-import PocketBase from "pocketbase";
+import { useAuthStore } from '../stores/user';
+import PocketBase from 'pocketbase';
 
 let pb: any = null;
 const store = useAuthStore();
@@ -215,11 +192,11 @@ const submit = async () => {
 const doLogin = async () => {
   try {
     const authData = await pb
-      .collection("users")
+      .collection('users')
       .authWithPassword(email.value, password.value)
       .then((res: any) => {
         store.setAuthed(true);
-        router.push("/latest");
+        router.push('/latest');
         return res;
       });
   } catch (error: any) {

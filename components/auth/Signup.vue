@@ -1,15 +1,10 @@
 <template>
   <div>
     <div class="text-center">
-      <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">
-        Sign up
-      </h1>
+      <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Sign up</h1>
       <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
         Already have an account?
-        <NuxtLink
-          class="text-blue-600 decoration-2 hover:underline font-medium"
-          to="/signin"
-        >
+        <NuxtLink class="font-medium text-blue-600 decoration-2 hover:underline" to="/signin">
           Sign in here
         </NuxtLink>
       </p>
@@ -18,15 +13,9 @@
     <div class="mt-5">
       <button
         type="button"
-        class="w-full py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:bg-gray-800 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800"
+        class="inline-flex w-full items-center justify-center gap-2 rounded-md border bg-white px-4 py-3 align-middle text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-white dark:focus:ring-offset-gray-800"
       >
-        <svg
-          class="w-4 h-auto"
-          width="46"
-          height="47"
-          viewBox="0 0 46 47"
-          fill="none"
-        >
+        <svg class="h-auto w-4" width="46" height="47" viewBox="0 0 46 47" fill="none">
           <path
             d="M46 24.0287C46 22.09 45.8533 20.68 45.5013 19.2112H23.4694V27.9356H36.4069C36.1429 30.1094 34.7347 33.37 31.5957 35.5731L31.5663 35.8669L38.5191 41.2719L38.9885 41.3306C43.4477 37.2181 46 31.1669 46 24.0287Z"
             fill="#4285F4"
@@ -48,7 +37,7 @@
       </button>
 
       <div
-        class="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-[1_1_0%] before:border-t before:border-gray-200 before:mr-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 after:ml-6 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600"
+        class="flex items-center py-3 text-xs uppercase text-gray-400 before:mr-6 before:flex-[1_1_0%] before:border-t before:border-gray-200 after:ml-6 after:flex-[1_1_0%] after:border-t after:border-gray-200 dark:text-gray-500 dark:before:border-gray-600 dark:after:border-gray-600"
       >
         Or
       </div>
@@ -58,22 +47,20 @@
         <div class="grid gap-y-4">
           <!-- Form Group -->
           <div>
-            <label for="username" class="block text-sm mb-2 dark:text-white"
-              >Username</label
-            >
+            <label for="username" class="mb-2 block text-sm dark:text-white">Username</label>
             <div class="relative">
               <input
                 type="username"
                 id="username"
                 name="username"
-                class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                class="block w-full rounded-md border border-gray-200 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
                 v-model="username"
                 required
                 aria-describedby="username-error"
               />
               <div
-                class="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3"
-                :class="{ hidden: usernameError != '' ? true : false }"
+                class="pointer-events-none absolute inset-y-0 right-0 items-center pr-3"
+                :class="usernameError === '' ? 'hidden' : 'flex'"
               >
                 <svg
                   class="h-5 w-5 text-red-500"
@@ -89,7 +76,7 @@
                 </svg>
               </div>
             </div>
-            <p class="hidden text-xs text-red-600 mt-2" id="username-error">
+            <p class="mt-2 hidden text-xs text-red-600" id="username-error">
               {{ usernameError }}
             </p>
           </div>
@@ -97,21 +84,19 @@
 
           <!-- Form Group -->
           <div>
-            <label for="email" class="block text-sm mb-2 dark:text-white"
-              >Email address</label
-            >
+            <label for="email" class="mb-2 block text-sm dark:text-white">Email address</label>
             <div class="relative">
               <input
                 type="email"
                 id="email"
                 v-model="email"
                 name="email"
-                class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                class="block w-full rounded-md border-gray-200 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
                 required
                 aria-describedby="email-error"
               />
               <div
-                class="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3"
+                class="pointer-events-none absolute inset-y-0 right-0 flex hidden items-center pr-3"
               >
                 <svg
                   class="h-5 w-5 text-red-500"
@@ -127,7 +112,7 @@
                 </svg>
               </div>
             </div>
-            <p class="hidden text-xs text-red-600 mt-2" id="email-error">
+            <p class="mt-2 hidden text-xs text-red-600" id="email-error">
               Please include a valid email address so we can get back to you
             </p>
           </div>
@@ -135,21 +120,19 @@
 
           <!-- Form Group -->
           <div>
-            <label for="password" class="block text-sm mb-2 dark:text-white"
-              >Password</label
-            >
+            <label for="password" class="mb-2 block text-sm dark:text-white">Password</label>
             <div class="relative">
               <input
                 type="password"
                 v-model="password"
                 id="password"
                 name="password"
-                class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                class="block w-full rounded-md border-gray-200 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
                 required
                 aria-describedby="password-error"
               />
               <div
-                class="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3"
+                class="pointer-events-none absolute inset-y-0 right-0 flex hidden items-center pr-3"
               >
                 <svg
                   class="h-5 w-5 text-red-500"
@@ -165,7 +148,7 @@
                 </svg>
               </div>
             </div>
-            <p class="hidden text-xs text-red-600 mt-2" id="password-error">
+            <p class="mt-2 hidden text-xs text-red-600" id="password-error">
               8+ characters required
             </p>
           </div>
@@ -173,9 +156,7 @@
 
           <!-- Form Group -->
           <div>
-            <label
-              for="confirm-password"
-              class="block text-sm mb-2 dark:text-white"
+            <label for="confirm-password" class="mb-2 block text-sm dark:text-white"
               >Confirm Password</label
             >
             <div class="relative">
@@ -183,12 +164,12 @@
                 type="password"
                 id="confirm-password"
                 name="confirm-password"
-                class="py-3 px-4 block w-full border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                class="block w-full rounded-md border-gray-200 px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
                 required
                 aria-describedby="confirm-password-error"
               />
               <div
-                class="hidden absolute inset-y-0 right-0 flex items-center pointer-events-none pr-3"
+                class="pointer-events-none absolute inset-y-0 right-0 flex hidden items-center pr-3"
               >
                 <svg
                   class="h-5 w-5 text-red-500"
@@ -204,10 +185,7 @@
                 </svg>
               </div>
             </div>
-            <p
-              class="hidden text-xs text-red-600 mt-2"
-              id="confirm-password-error"
-            >
+            <p class="mt-2 hidden text-xs text-red-600" id="confirm-password-error">
               Password does not match the password
             </p>
           </div>
@@ -220,15 +198,13 @@
                 id="remember-me"
                 name="remember-me"
                 type="checkbox"
-                class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
+                class="pointer-events-none mt-0.5 shrink-0 rounded border-gray-200 text-blue-600 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:checked:border-blue-500 dark:checked:bg-blue-500 dark:focus:ring-offset-gray-800"
               />
             </div>
             <div class="ml-3">
               <label for="remember-me" class="text-sm dark:text-white"
                 >I accept the
-                <a
-                  class="text-blue-600 decoration-2 hover:underline font-medium"
-                  href="#"
+                <a class="font-medium text-blue-600 decoration-2 hover:underline" href="#"
                   >Terms and Conditions</a
                 ></label
               >
@@ -238,7 +214,7 @@
 
           <button
             type="submit"
-            class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800"
+            class="inline-flex items-center justify-center gap-2 rounded-md border border-transparent bg-blue-500 px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
           >
             Sign up
           </button>
@@ -250,19 +226,18 @@
 </template>
 
 <script setup lang="ts">
-import PocketBase from "pocketbase";
+import PocketBase from 'pocketbase';
 
 const config = useRuntimeConfig() as any;
 let pb: any = null;
-const emit = defineEmits(["success"]);
-const email = ref("");
-const password = ref("");
-const username = ref("");
-const usernameError = ref("");
+const emit = defineEmits(['success']);
+const email = ref('');
+const password = ref('');
+const username = ref('');
+const usernameError = ref('');
 onMounted(async () => {
   pb = new PocketBase(config.public.PB_ENDPOINT);
 });
-
 
 const doCreateAccount = async () => {
   try {
@@ -271,12 +246,15 @@ const doCreateAccount = async () => {
       email: email.value,
       emailVisibility: true,
       password: password.value,
-      passwordConfirm: password.value,
+      passwordConfirm: password.value
     };
 
-    const record = await pb.collection("users").create(data).then(()=>{
-      emit("success")
-    });
+    const record = await pb
+      .collection('users')
+      .create(data)
+      .then(() => {
+        emit('success');
+      });
 
     // await doLogin();
   } catch (error: any) {
